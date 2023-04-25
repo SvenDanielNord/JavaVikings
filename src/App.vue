@@ -1,13 +1,11 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import { searchForThing } from './data/FetchData';
-console.log(searchForThing)
+import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  hej
-
-  <button value="Cool"></button>
+  <div>
+    <RouterView />
+  </div>
 </template>
 
 

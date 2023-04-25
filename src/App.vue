@@ -1,12 +1,13 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import { searchForThing } from './data/FetchData';
-console.log(searchForThing)
+// import { RouterLink, RouterView } from 'vue-router'
+
+import PictureBox from './components/PictureBox.vue'
+
 </script>
-
+  
 <template>
-  hej
-
+ 
+  <PictureBox />
   <button value="Cool"></button>
 </template>
 

@@ -1,14 +1,18 @@
 <script setup>
+
 // import { RouterLink, RouterView } from 'vue-router'
 
 import PictureBox from './components/PictureBox.vue'
+import { RouterView } from 'vue-router'
 
 </script>
   
 <template>
- 
-  <PictureBox />
-  <button value="Cool"></button>
+
+  <div>
+    <RouterView />
+  </div>
+>>>>>>> main
 </template>
 
 

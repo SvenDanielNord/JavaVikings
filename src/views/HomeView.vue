@@ -2,17 +2,6 @@
 import { RouterLink } from 'vue-router'
 import { searchForThing } from '../data/FetchData';
 
-async function fetchUrl() {
-    let response = await searchForThing('mössa')
-    let json = response.json
-    console.log(json)
-    return json
-}
-
-//let fetch = {
-//    let response = await searchForThing('mössa')
-//}
-
 
 export default {
     components: {
@@ -20,11 +9,18 @@ export default {
     },
     data() {
         return {
-            url: fetchUrl()
+            url: null,
         }
     },
     methods: {
-
+        async fetchUrl() {
+            let response = await searchForThing('mössa')
+            this.url = response.url
+        }
+    },
+    async mounted() {
+        let response = await searchForThing('mössa')
+        this.url = response.url
     }
 }
 </script>
@@ -33,6 +29,7 @@ export default {
     <div>
         <p>Hello!</p>
         <RouterLink to="/about">About</RouterLink>
+        <button @click="fetchUrl">Hämta ny bild länk</button>
         {{ url }}
     </div>
 </template>

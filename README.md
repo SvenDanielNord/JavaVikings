@@ -1,9 +1,6 @@
-# JavaVikingsVue
+# vue-project
 
 This template should help get you started developing with Vue 3 in Vite.
-
-## Link to netlify
-https://storied-toffee-28c2ca.netlify.app
 
 ## Recommended IDE Setup
 

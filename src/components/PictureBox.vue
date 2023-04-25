@@ -1,19 +1,31 @@
+
+
+
 <script>
 import {searchForThing} from '../data/FetchData.js' 
 
 export default{
-    data(){
+    data() {
         return {
-            picture: searchForThing.url,
-            
+            url: null,
         }
     },
+    methods: {
+        async fetchUrl() {
+            let response = await searchForThing('mössa')
+            this.url = response.url
+        }
+    },
+    async mounted() {
+        let response = await searchForThing('mössa')
+        this.url = response.url
+    }
     
 
 }
 
 </script>
 <template>
-    <p>hej</p>
-    <div><img src="${picture}" alt=""></div>
+    <div><a @click="fetchUrl"><img :src="this.url" alt=""></a></div>
 </template>
+

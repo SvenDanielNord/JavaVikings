@@ -2,7 +2,7 @@
 
 // import { RouterLink, RouterView } from 'vue-router'
 
-import PictureBox from './components/PictureBox.vue'
+
 import { RouterView } from 'vue-router'
 
 </script>
@@ -12,7 +12,7 @@ import { RouterView } from 'vue-router'
   <div>
     <RouterView />
   </div>
->>>>>>> main
+
 </template>
 
 

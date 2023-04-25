@@ -1,12 +1,14 @@
 <script>
 import { RouterLink } from 'vue-router'
 import { searchForThing } from '../data/FetchData';
+import PictureBox from '../components/PictureBox.vue';
 
 
 export default {
     components: {
-        RouterLink
-    },
+    RouterLink,
+    PictureBox
+},
     data() {
         return {
             url: null,
@@ -27,9 +29,13 @@ export default {
 
 <template>
     <div>
+        
         <p>Hello!</p>
         <RouterLink to="/about">About</RouterLink>
         <button @click="fetchUrl">Hämta ny bild länk</button>
         {{ url }}
+        <PictureBox />
+        
+
     </div>
 </template>

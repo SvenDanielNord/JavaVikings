@@ -6,6 +6,8 @@ console.log(searchForThing)
 
 <template>
   hej
+
+  <button value="Cool"></button>
 </template>
 
 

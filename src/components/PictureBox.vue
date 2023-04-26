@@ -15,7 +15,7 @@ export default{
         async fetchUrl() {
             let response = await searchForThing('mössa')
             this.url = response.url
-            this.title = response.description
+            this.checkDescription(this.description)
         },
         checkDescription(description) {
             if (typeof description === 'object') {

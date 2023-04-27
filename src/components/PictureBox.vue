@@ -2,9 +2,9 @@
 
 
 <script>
-import {searchForThing} from '../data/FetchData.js' 
+import { searchForThing } from '../data/FetchData.js'
 
-export default{
+export default {
     data() {
         return {
             url: null,
@@ -15,7 +15,7 @@ export default{
         async fetchUrl() {
             let response = await searchForThing('mössa')
             this.url = response.url
-            this.checkDescription(this.description)
+            this.checkDescription(response.description)
         },
         checkDescription(description) {
             if (typeof description === 'object') {
@@ -32,9 +32,9 @@ export default{
         let response = await searchForThing('mössa')
         this.url = response.url
         this.description = response.description
-        this.checkDescription(this.description)
+        this.checkDescription(response.description)
     }
-    
+
 
 }
 

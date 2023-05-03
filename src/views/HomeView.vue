@@ -1,6 +1,5 @@
 <script>
 import { RouterLink } from 'vue-router'
-import { searchForThing } from '../data/FetchData';
 import PictureBox from '../components/PictureBox.vue';
 
 
@@ -9,21 +8,7 @@ export default {
     RouterLink,
     PictureBox
 },
-    data() {
-        return {
-            url: null,
-        }
-    },
-    methods: {
-        async fetchUrl() {
-            let response = await searchForThing('mössa')
-            this.url = response.url
-        }
-    },
-    async mounted() {
-        let response = await searchForThing('mössa')
-        this.url = response.url
-    }
+
 }
 </script>
 
@@ -32,8 +17,17 @@ export default {
         
         <h1>JavaVikings</h1>
         <RouterLink to="/about">About</RouterLink>
-        <button @click="fetchUrl">Generera gear</button>
-        <PictureBox />
+        <button>Generera gear</button>
+
+        <PictureBox search="hjälm"/>
+        <PictureBox search="svärd"/>
+        <PictureBox search="sköld"/>
+        <PictureBox search="brynja"/>
+        <PictureBox search="byxa"/>
+        <PictureBox search="Skor"/>
+
+        
+        
         
 
     </div>
@@ -42,6 +36,11 @@ export default {
 <style>
 body{
     display: flex;
+    
 }
+img {
+        height: 30 px;
+        width: 30 px;
+    }
 
 </style>

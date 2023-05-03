@@ -30,12 +30,18 @@ export default {
 <template>
     <div>
         
-        <p>Hello!</p>
+        <h1>JavaVikings</h1>
         <RouterLink to="/about">About</RouterLink>
-        <button @click="fetchUrl">Hämta ny bild länk</button>
-        {{ url }}
+        <button @click="fetchUrl">Generera gear</button>
         <PictureBox />
         
 
     </div>
 </template>
+
+<style>
+body{
+    display: flex;
+}
+
+</style>

@@ -22,7 +22,7 @@ export default {
 
         <div class="theGrid">
             <PictureBox class="itemHelmet" search="hjälm" />
-            <PictureBox class="itemArmor" search="brynja" />
+            <PictureBox class="itemArmor" search="tröja" />
             <PictureBox class="itemSword" search="svärd" />
             <PictureBox class="itemShield" search="sköld" />
             <PictureBox class="itemLeggs" search="byxa" />

@@ -19,11 +19,12 @@ export default {
     },
     methods: {
         async fetchUrl(search) {
-            this.loading = true;
-            let response = await searchForThing(search);
-            this.loading = false;
-            this.url = response.url;
-            this.checkDescription(response.description);
+            let response = await searchForThing(search)
+            while(response.url.includes("emuseumplus")){
+                response = await searchForThing(search)
+            }
+            this.url = response.url
+            this.checkDescription(response.description)
         },
         checkDescription(description) {
             if (typeof description === "object") {

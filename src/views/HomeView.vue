@@ -98,11 +98,10 @@ img {
     align-self: center;
 }
 
-
 @media (max-width: 480px) {
     img {
-        height: 90px;
-        width: 90px;
+        height: 105px;
+        width: 105px;
     }
 }
 

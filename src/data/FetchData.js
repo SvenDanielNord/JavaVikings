@@ -1,5 +1,5 @@
 async function searchForThing(thing) {
-    const apiUrl = `https://kulturarvsdata.se/ksamsok/api?method=search&version=1.1&hitsPerPage=10&query=text=${thing}%20AND%20thumbnailExists=j`;
+    const apiUrl = `https://kulturarvsdata.se/ksamsok/api?method=search&version=1.1&hitsPerPage=20&query=itemName=${thing}%20AND%20thumbnailExists=j`;
     let response = await fetch(apiUrl, {
       headers: {
         Accept: 'application/json'
@@ -17,16 +17,14 @@ async function searchForThing(thing) {
         } else if (val.desc) {
           desc = val.desc;
         }
-      }
-      const urlAndDescription = {
+    }
+    const urlAndDescription = {
         url: thumbnailSource,
         description: desc
-      }
-      return urlAndDescription
-      
-    } else {
-      console.log(`No records found for ${thing}`);
     }
+    
+      return urlAndDescription  
+    } 
   }
 
 

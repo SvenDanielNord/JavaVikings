@@ -15,6 +15,9 @@ export default {
     methods: {
         async fetchUrl(search) {
             let response = await searchForThing(search)
+            while(response.url.includes("emuseumplus")){
+                response = await searchForThing(search)
+            }
             this.url = response.url
             this.checkDescription(response.description)
         },

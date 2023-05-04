@@ -53,48 +53,63 @@ img {
 
 .theGrid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .itemHelmet {
-    grid-column: 2;
+    grid-column: 2 / span 2;
     grid-row: 1;
     justify-self: center;
     align-self: center;
 }
 
 .itemArmor {
-    grid-column: 2;
+    grid-column: 2 / span 2;
     grid-row: 2;
     justify-self: center;
     align-self: center;
 }
 
 .itemSword {
-    grid-column: 1 / span 2;
+    grid-column: 2;
     grid-row: 3;
     justify-self: center;
     align-self: center;
 }
 
 .itemShield {
-    grid-column: 2 / span 3;
+    grid-column: 3;
     grid-row: 3;
     justify-self: center;
     align-self: center;
 }
 
 .itemLeggs {
-    grid-column: 2;
+    grid-column: 2 / span 2;
     grid-row: 4;
     justify-self: center;
     align-self: center;
 }
 
 .itemFeet {
-    grid-column: 2;
+    grid-column: 2 / span 2;
     grid-row: 5;
     justify-self: center;
     align-self: center;
+}
+
+
+@media (max-width: 480px) {
+    img {
+        height: 90px;
+        width: 90px;
+    }
+}
+
+@media (min-width: 768px) {
+    img {
+        height: 200px;
+        width: 200px;
+    }
 }
 </style>

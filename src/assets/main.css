@@ -1,5 +1,9 @@
 /* @import './base.css'; */
 
+body{
+  background: url(https://wallpapers.com/images/hd/viking-longship-nordic-sea-txnyyb2j0rz8x9ut.jpg) no-repeat;
+  background-size: cover;
+}
 
 
 /* #app {

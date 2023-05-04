@@ -1,5 +1,6 @@
 async function searchForThing(thing) {
     const apiUrl = `https://kulturarvsdata.se/ksamsok/api?method=search&version=1.1&hitsPerPage=20&query=itemName=${thing}%20AND%20thumbnailExists=j`;
+    //https://kulturarvsdata.se/ksamsok/api?method=search&version=1.1&hitsPerPage=20&query=create_fromTime<=1599 and create_toTime>=1600&query=itemName=${thing}%20AND%20thumbnailExists=j
     let response = await fetch(apiUrl, {
       headers: {
         Accept: 'application/json'
@@ -26,7 +27,6 @@ async function searchForThing(thing) {
       return urlAndDescription  
     } 
   }
-
 
 export { searchForThing }
 

@@ -5,42 +5,96 @@ import PictureBox from '../components/PictureBox.vue';
 
 export default {
     components: {
-    RouterLink,
-    PictureBox
-},
+        RouterLink,
+        PictureBox
+    },
 
 }
 </script>
 
 <template>
-    <div>
-        
-        <h1>JavaVikings</h1>
-        <RouterLink to="/about">About</RouterLink>
-        <button>Generera gear</button>
+    <div class="flexCenter">
 
-        <PictureBox search="hjälm"/>
-        <PictureBox search="svärd"/>
-        <PictureBox search="sköld"/>
-        <PictureBox search="brynja"/>
-        <PictureBox search="byxa"/>
-        <PictureBox search="Skor"/>
+        <div class="flexGap">
+            <RouterLink to="/about">About</RouterLink>
+            <button>Generera gear</button>
+        </div>
 
-        
-        
-        
+        <div class="theGrid">
+            <PictureBox class="itemHelmet" search="hjälm" />
+            <PictureBox class="itemArmor" search="brynja" />
+            <PictureBox class="itemSword" search="svärd" />
+            <PictureBox class="itemShield" search="sköld" />
+            <PictureBox class="itemLeggs" search="byxa" />
+            <PictureBox class="itemFeet" search="Skor" />
+        </div>
 
     </div>
 </template>
 
 <style>
-body{
+.flexCenter {
     display: flex;
-    
+    flex-direction: column;
+    align-items: center;
 }
-img {
-        height: 30 px;
-        width: 30 px;
-    }
 
+.flexGap {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+img {
+    height: 125px;
+    width: 125px;
+    border: 5px black solid;
+}
+
+.theGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.itemHelmet {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    align-self: center;
+}
+
+.itemArmor {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: center;
+    align-self: center;
+}
+
+.itemSword {
+    grid-column: 1 / span 2;
+    grid-row: 3;
+    justify-self: center;
+    align-self: center;
+}
+
+.itemShield {
+    grid-column: 2 / span 3;
+    grid-row: 3;
+    justify-self: center;
+    align-self: center;
+}
+
+.itemLeggs {
+    grid-column: 2;
+    grid-row: 4;
+    justify-self: center;
+    align-self: center;
+}
+
+.itemFeet {
+    grid-column: 2;
+    grid-row: 5;
+    justify-self: center;
+    align-self: center;
+}
 </style>

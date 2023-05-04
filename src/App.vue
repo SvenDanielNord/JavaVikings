@@ -9,10 +9,20 @@ import { RouterView } from 'vue-router'
   
 <template>
 
-  <div>
+  <div class="flexCenter">
+    <h1>JavaVikings</h1>
     <RouterView />
   </div>
 
 </template>
+
+<style>
+.flexCenter{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+</style>
 
 

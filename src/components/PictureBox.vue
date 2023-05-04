@@ -6,25 +6,24 @@ import { searchForThing } from '../data/FetchData.js'
 import LoadSpin from './LoadSpin.vue'
 
 export default {
-    components: { 
-        LoadSpin 
-    },
     props: ["search"],
     data() {
         return {
             url: null,
             title: null,
-            loading: false,
+            loading: false
         };
     },
     methods: {
         async fetchUrl(search) {
-            let response = await searchForThing(search)
-            while(response.url.includes("emuseumplus")){
-                response = await searchForThing(search)
+            this.loading = true;
+            let response = await searchForThing(search);
+            this.loading = false;
+            while (response.url.includes("emuseumplus")) {
+                response = await searchForThing(search);
             }
-            this.url = response.url
-            this.checkDescription(response.description)
+            this.url = response.url;
+            this.checkDescription(response.description);
         },
         checkDescription(description) {
             if (typeof description === "object") {
@@ -44,14 +43,12 @@ export default {
         this.description = response.description;
         this.checkDescription(response.description);
     },
-    
+    components: { LoadSpin }
 }
 
 </script>
 <template>
     <div v-if="loading"><LoadSpin /></div>
-    <div v-else><a @click="fetchUrl(search)" :title="title"><img :src="this.url" alt=""></a>
-       
-    </div>
+    <div v-else><a @click="fetchUrl(search)" :title="title"><img :src="this.url" alt=""></a></div>
 </template>
 

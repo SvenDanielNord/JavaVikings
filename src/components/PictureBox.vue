@@ -30,15 +30,11 @@ export default {
             this.url = response.url
             this.checkDescription(response.description)
             this.generateStats()
-            // console.log(this.search + " har denna url: " + this.url)
             this.emitStats()
         },
         checkDescription(description) {
             if (typeof description === "object") {
                 this.title = description["@value"];
-                // } else if (description.length < 2) {
-                //     //TODO: Gör bättre
-                //     this.title = 'Missing information'
             }
             else {
                 this.title = description;
@@ -48,7 +44,6 @@ export default {
             if (this.url !== undefined) {
                 let randomNumber = Math.floor(Math.random() * 20) + 5
                 this.stats = ((Math.round(this.url.length / 3)) + randomNumber)
-                // console.log(this.search + " have " + this.stats + " stats.")
             }
         },
         emitStats() {
@@ -60,7 +55,6 @@ export default {
         let response = this.fetchUrl(this.search);
         this.url = response.url;
         this.title = response.description;
-        this.checkDescription(response.description); //Ta bort parameter och hämta från title i data istället?
         this.generateStats()
     },
 }

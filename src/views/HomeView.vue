@@ -10,18 +10,38 @@ export default {
     },
     data() {
         return {
+            items: 
+            [{itemName: "hjälm", itemStat: 0},
+            {itemName: "tröja", itemStat: 0},
+            {itemName: "svärd", itemStat: 0},
+            {itemName: "sköld", itemStat: 0},
+            {itemName: "byxa", itemStat: 0},
+            {itemName: "skor", itemStat: 0}],
+
             totalStats: 0,
         }
     },
     methods: {
-        log(stat, name) {
-            console.log(name + " har " + stat + " i stats.")
-        },
-        getAllStats() {
+        updateItems(stat, name) {
+            for (const item of this.items) {
+                if(item.itemName === name){
+                    item.itemStat = stat
+                }
+            }
 
+            this.combineStats()
         },
+        combineStats() {
+            this.totalStats = 0
+            for (const item of this.items) {
+                this.totalStats += item.itemStat
+
+            }
+            console.log("TotalStats is: " + this.totalStats)
+        },
+
+        //TODO: Skapa klass för items???
     },
-
 }
 </script>
 
@@ -34,12 +54,12 @@ export default {
         </div>
 
         <div class="theGrid">
-            <PictureBox @stat="(stat, name) => log(stat, name)" class="itemHelmet" search="hjälm" />
-            <PictureBox @stat="(stat, name) => log(stat, name)" class="itemArmor" search="tröja" />
-            <PictureBox @stat="(stat, name) => log(stat, name)" class="itemSword" search="svärd" />
-            <PictureBox @stat="(stat, name) => log(stat, name)" class="itemShield" search="sköld" />
-            <PictureBox @stat="(stat, name) => log(stat, name)" class="itemLeggs" search="byxa" />
-            <PictureBox @stat="(stat, name) => log(stat, name)" class="itemFeet" search="Skor" />
+            <PictureBox @stat="(stat, name) => updateItems(stat, name)" class="itemHelmet" search="hjälm" />
+            <PictureBox @stat="(stat, name) => updateItems(stat, name)" class="itemArmor" search="tröja" />
+            <PictureBox @stat="(stat, name) => updateItems(stat, name)" class="itemSword" search="svärd" />
+            <PictureBox @stat="(stat, name) => updateItems(stat, name)" class="itemShield" search="sköld" />
+            <PictureBox @stat="(stat, name) => updateItems(stat, name)" class="itemLeggs" search="byxa" />
+            <PictureBox @stat="(stat, name) => updateItems(stat, name)" class="itemFeet" search="skor" />
         </div>
 
     </div>

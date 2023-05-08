@@ -20,7 +20,6 @@ export default {
 
             characterName: '',
             totalStats: 0,
-            //character: [{ name: '', stats: 0 }],
         }
     },
     methods: {

@@ -8,6 +8,11 @@ export default {
         RouterLink,
         PictureBox
     },
+    methods: {
+        log(){
+            console.log("Det funka")
+        },
+    },
 
 }
 </script>
@@ -21,7 +26,7 @@ export default {
         </div>
 
         <div class="theGrid">
-            <PictureBox class="itemHelmet" search="hjälm" />
+            <PictureBox @stat="log" class="itemHelmet" search="hjälm" />
             <PictureBox class="itemArmor" search="tröja" />
             <PictureBox class="itemSword" search="svärd" />
             <PictureBox class="itemShield" search="sköld" />

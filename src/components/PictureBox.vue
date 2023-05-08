@@ -30,7 +30,7 @@ export default {
             this.url = response.url
             this.checkDescription(response.description)
             this.generateStats()
-            console.log(this.search + " har denna url: " + this.url)
+            // console.log(this.search + " har denna url: " + this.url)
             this.emitStats()
         },
         checkDescription(description) {
@@ -48,12 +48,11 @@ export default {
             if (this.url !== undefined) {
                 let randomNumber = Math.floor(Math.random() * 20) + 5
                 this.stats = ((Math.round(this.url.length / 3)) + randomNumber)
-                console.log(this.search + " have " + this.stats + " stats.")
+                // console.log(this.search + " have " + this.stats + " stats.")
             }
         },
         emitStats() {
-            this.$emit('stat', this.stats)
-
+            this.$emit('stat', this.stats, this.search)
         },
     },
 

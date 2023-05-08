@@ -8,9 +8,17 @@ export default {
         RouterLink,
         PictureBox
     },
+    data() {
+        return {
+            totalStats: 0,
+        }
+    },
     methods: {
-        log(){
-            console.log("Det funka")
+        log(stat, name) {
+            console.log(name + " har " + stat + " i stats.")
+        },
+        getAllStats() {
+
         },
     },
 
@@ -26,12 +34,12 @@ export default {
         </div>
 
         <div class="theGrid">
-            <PictureBox @stat="log" class="itemHelmet" search="hjälm" />
-            <PictureBox class="itemArmor" search="tröja" />
-            <PictureBox class="itemSword" search="svärd" />
-            <PictureBox class="itemShield" search="sköld" />
-            <PictureBox class="itemLeggs" search="byxa" />
-            <PictureBox class="itemFeet" search="Skor" />
+            <PictureBox @stat="(stat, name) => log(stat, name)" class="itemHelmet" search="hjälm" />
+            <PictureBox @stat="(stat, name) => log(stat, name)" class="itemArmor" search="tröja" />
+            <PictureBox @stat="(stat, name) => log(stat, name)" class="itemSword" search="svärd" />
+            <PictureBox @stat="(stat, name) => log(stat, name)" class="itemShield" search="sköld" />
+            <PictureBox @stat="(stat, name) => log(stat, name)" class="itemLeggs" search="byxa" />
+            <PictureBox @stat="(stat, name) => log(stat, name)" class="itemFeet" search="Skor" />
         </div>
 
     </div>

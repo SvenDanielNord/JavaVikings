@@ -7,7 +7,7 @@ export default {
     },
     data() {
         return {
-            characters: []
+            character: []
         }
     },
     methods: {
@@ -15,9 +15,13 @@ export default {
             for (let i = 0; i < localStorage.length; i++) {
                 const characterName = localStorage.key(i)
                 const characterStats = localStorage.getItem(characterName)
-                this.characters.push({ name: characterName, stats: characterStats})
+                this.character.push({ name: characterName, stats: characterStats})
             }
         },
+        fight(characters) {
+            console.log(characters.name, characters.stats)
+            alert('Too bad, you lost sucker')
+        }
     },
     mounted() {
         this.loadAllCharacters()
@@ -27,20 +31,23 @@ export default {
 
 <template>
     <div>
-        <h1>Time to fight!</h1>
+        <h1>Pick a worthy opponent!</h1>
         <div>
             <ul>
-                <li v-for="character in characters" :key="character.name">{{ character.name }}</li>
+                <li @click="fight(characters)" v-for="characters in character" :key="characters.name">{{ characters.name }}</li>
             </ul>
         </div>
         <RouterLink to="/">Home</RouterLink>
     </div>
 </template>
 
-<style>
-    li {
+<style scoped>
+    div {
         color: rgb(255, 0, 0);
         font-size: xx-large;
+    }
+    li {
         list-style: none;
+        cursor: pointer;
     }
 </style>

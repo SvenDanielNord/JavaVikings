@@ -60,7 +60,7 @@ export default {
     <div class="flexCenter">
 
         <div class="flexGap">
-            <RouterLink to="/about">About</RouterLink>
+            <RouterLink to="/fight">Fight</RouterLink>
             <button>Generera gear</button>
             <input type="text" id="name" v-model="characterName" required minlength="4" maxlength="16" size="10">
             <button @click="saveCharacter">Save character</button>

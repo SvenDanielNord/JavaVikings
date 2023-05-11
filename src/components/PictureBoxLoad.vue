@@ -47,7 +47,7 @@ export default {
             }
         },
         emitStats() {
-            this.$emit('stat', this.stats, this.search, this.url)
+            this.$emit('stat', this.stats, this.search)
         },
     },
 

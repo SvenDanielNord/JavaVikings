@@ -11,36 +11,35 @@ export default {
     data() {
         return {
             items:
-                [{ itemName: "hjälm", itemStat: 0 },
-                { itemName: "tröja", itemStat: 0 },
-                { itemName: "svärd", itemStat: 0 },
-                { itemName: "sköld", itemStat: 0 },
-                { itemName: "byxa", itemStat: 0 },
-                { itemName: "skor", itemStat: 0 }],
+                [{ itemName: "hjälm", itemStat: 0, url: "" },
+                { itemName: "tröja", itemStat: 0, url: "" },
+                { itemName: "svärd", itemStat: 0, url: "" },
+                { itemName: "sköld", itemStat: 0, url: "" },
+                { itemName: "byxa", itemStat: 0, url: "" },
+                { itemName: "skor", itemStat: 0, url: "" }],
 
             characterName: '',
             totalStats: 0,
         }
     },
     methods: {
-        updateItems(stat, name) {
+        updateItems(stat, name, url) {
             for (const item of this.items) {
                 if (item.itemName === name) {
                     item.itemStat = stat
+                    item.url = url
                 }
             }
-
             this.combineStats()
         },
         combineStats() {
             this.totalStats = 0
             for (const item of this.items) {
                 this.totalStats += item.itemStat
-
             }
         },
         saveCharacter() {
-            localStorage.setItem(this.characterName, this.totalStats)
+            localStorage.setItem(this.characterName, this.items) //Skicka med hela listan istället för stats där nu även url finns med.
         },
         clearCharacter() {
             localStorage.clear()
@@ -69,12 +68,12 @@ export default {
         </div>
 
         <div class="theGrid">
-            <PictureBox @stat="(stat, name) => updateItems(stat, name)" class="itemHelmet" search="hjälm" />
-            <PictureBox @stat="(stat, name) => updateItems(stat, name)" class="itemArmor" search="tröja" />
-            <PictureBox @stat="(stat, name) => updateItems(stat, name)" class="itemSword" search="svärd" />
-            <PictureBox @stat="(stat, name) => updateItems(stat, name)" class="itemShield" search="sköld" />
-            <PictureBox @stat="(stat, name) => updateItems(stat, name)" class="itemLeggs" search="byxa" />
-            <PictureBox @stat="(stat, name) => updateItems(stat, name)" class="itemFeet" search="skor" />
+            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemHelmet" search="hjälm" />
+            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemArmor" search="tröja" />
+            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemSword" search="svärd" />
+            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemShield" search="sköld" />
+            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemLeggs" search="byxa" />
+            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemFeet" search="skor" />
         </div>
 
     </div>

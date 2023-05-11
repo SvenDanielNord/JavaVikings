@@ -73,7 +73,7 @@ export default {
                 </ul>
             </div>
         </div>
-        <TimeToFight :fighterEtt="figtherOne" :fighterTva="figtherTwo"/>
+        <TimeToFight :characterOne="figtherOne" :characterTwo="figtherTwo"/>
     </div>
 </template>
 

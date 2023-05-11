@@ -1,28 +1,49 @@
 <script>
-export default {
-    props: ["search"],
-    emits: ["stat"],
+import { watch } from 'vue';
 
+export default {
+    props: {
+        gearObject: {
+            type: Object
+        }
+    },
     data() {
         return {
-            listOfUrls: ["det", "funkar"],
+            listOfUrls: [],
         };
     },
-
+    created() {
+        watch(() => this.gearObject,
+            () => {
+                this.updateUrlList();
+            }
+        );
+    },
     methods: {
-    
+        updateUrlList() {
+            let newListOfUrls = []
+            for (const item of this.gearObject.gear) {
+                newListOfUrls.push(item.url)
+            }
+            this.listOfUrls = newListOfUrls
+            newListOfUrls = []
+        },
     },
 }
-
 </script>
 
 
 <template>
     <div>
-        <a href="#" v-for="url of listOfUrls">
-        {{ url }}
-        </a>
-
+        <img class="smallPictures" :src="url" v-for="url of listOfUrls">
     </div>
 </template>
+
+<style>
+.smallPictures {
+    width: 40px;
+    height: 40px;
+    border: 1px solid black;
+}
+</style>
 

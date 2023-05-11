@@ -4,7 +4,7 @@ import PictureBoxLoad from './PictureBoxLoad.vue'
 
 
 export default {
-    components:{
+    components: {
         PictureBoxLoad
     },
     data() {
@@ -20,13 +20,11 @@ export default {
             for (let i = 0; i < localStorage.length; i++) {
                 const characterName = localStorage.key(i)
                 const characterGear = localStorage.getItem(characterName)
-                this.characters.push({ name: characterName, gear: characterGear })
+                this.characters.push({ name: characterName, gear: JSON.parse(characterGear) })
             }
-            console.log(this.characters)
         },
         setFigtherOne(char) {
             this.figtherOne = char
-
         },
         setFigtherTwo(char) {
             this.figtherTwo = char
@@ -65,7 +63,7 @@ export default {
                 </ul>
                 <!-- bilder för figther1 i en pictureboxLoad -->
                 <div>
-                    <PictureBoxLoad />
+                    <PictureBoxLoad :gearObject="figtherOne" />
                 </div>
             </div>
             <div class="flex">
@@ -81,7 +79,7 @@ export default {
                 </ul>
                 <!-- bilder för figther2 i en pictureboxLoad -->
                 <div>
-                    <PictureBoxLoad />
+                    <PictureBoxLoad :gearObject="figtherTwo" />
                 </div>
             </div>
         </div>
@@ -109,4 +107,5 @@ li {
 .bg {
     background-color: aliceblue;
 }
+
 </style>

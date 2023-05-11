@@ -1,8 +1,12 @@
 <script>
+import { getLocation } from '../data/FetchLocation.js'
+
 export default {
     data() {
         return {
-            character: []
+            character: [],
+            location: null,
+            fighter: null,
         }
     },
     methods: {
@@ -13,9 +17,13 @@ export default {
                 this.character.push({ name: characterName, stats: characterStats })
             }
         },
-        fight(characters) {
-            console.log(characters.name, characters.stats)
-            alert('Too bad, you lost sucker')
+        async getFighterAndLocation(character) {
+            this.fighter = character.name
+            this.location = await getLocation()
+            this.timeToFight()
+        },
+        timeToFight() {
+            alert(this.fighter + ' is fighting the mighty Bosse at ' + this.location + ', it\'s a close fight but Bosse lands the final hit to finish ' + this.fighter + ' R.I.P in peace :(')
         }
     },
     mounted() {
@@ -29,7 +37,7 @@ export default {
         <h1>Pick a worthy opponent!</h1>
         <div>
             <ul>
-                <li @click="fight(characters)" v-for="characters in character" :key="characters.name">{{ characters.name }}
+                <li @click="getFighterAndLocation(characters)" v-for="characters in character" :key="characters.name">{{ characters.name }}
                 </li>
             </ul>
         </div>

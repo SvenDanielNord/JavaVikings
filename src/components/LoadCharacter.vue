@@ -1,7 +1,10 @@
 <script>
-import { getLocation } from '../data/FetchLocation.js'
+import TimeToFight from './TimeToFight.vue'
 
 export default {
+    components: {
+        TimeToFight
+    },
     data() {
         return {
             location: null,
@@ -15,7 +18,7 @@ export default {
             for (let i = 0; i < localStorage.length; i++) {
                 const characterName = localStorage.key(i)
                 const characterGear = localStorage.getItem(characterName)
-                this.characters.push({ name: characterName, gear: characterGear })
+                this.characters.push({ name: characterName, gear: JSON.parse(characterGear) })
             }
             console.log(this.characters)
         },
@@ -25,10 +28,6 @@ export default {
         },
         setFigtherTwo(char) {
             this.figtherTwo = char
-        },
-        fight(characters) {
-            console.log(characters.name, characters.gear)
-            alert('Too bad, you lost sucker')
         },
         // combineStats() {
         //     this.totalStats = 0
@@ -53,7 +52,7 @@ export default {
                     <fieldset class="bg">
                         <div>Chosen figther: {{ figtherOne.name }}</div>
                     </fieldset>
-                    <li class="bg" @click="setFigtherOne(char)" v-for="char in characters">
+                    <li class="bg" @click="setFigtherOne(char)" v-for="char in characters" :key="char.name">
                         {{ char.name }}
                     </li>
                     <!-- bilder för figther1 i en pictureboxLoad -->
@@ -66,7 +65,7 @@ export default {
                     <fieldset class="bg">
                         <div>Chosen figther: {{ figtherTwo.name }}</div>
                     </fieldset>
-                    <li class="bg" @click="setFigtherTwo(char)" v-for="char in characters">
+                    <li class="bg" @click="setFigtherTwo(char)" v-for="char in characters" :key="char.name">
                         {{ char.name }}
                     </li>
 
@@ -74,6 +73,7 @@ export default {
                 </ul>
             </div>
         </div>
+        <TimeToFight :characterOne="figtherOne" :characterTwo="figtherTwo"/>
     </div>
 </template>
 

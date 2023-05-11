@@ -1,52 +1,13 @@
 <script>
 import { RouterLink } from 'vue-router'
-import PictureBox from '../components/PictureBox.vue';
+
+
 
 
 export default {
     components: {
         RouterLink,
-        PictureBox
-    },
-    data() {
-        return {
-            items:
-                [{ itemName: "hjälm", itemStat: 0, url: "" },
-                { itemName: "tröja", itemStat: 0, url: "" },
-                { itemName: "svärd", itemStat: 0, url: "" },
-                { itemName: "sköld", itemStat: 0, url: "" },
-                { itemName: "byxa", itemStat: 0, url: "" },
-                { itemName: "skor", itemStat: 0, url: "" }],
-
-            characterName: '',
-            totalStats: 0,
-        }
-    },
-    methods: {
-        updateItems(stat, name, url) {
-            for (const item of this.items) {
-                if (item.itemName === name) {
-                    item.itemStat = stat
-                    item.url = url
-                }
-            }
-        },
-        saveCharacter() {
-            localStorage.setItem(this.characterName, JSON.stringify(this.items))
-        },
-        clearCharacter() {
-            localStorage.clear()
-        },
-        loadCharacter() {
-            const getCharacterName = this.characterName
-            const getCharacterStats = localStorage.getItem(getCharacterName)
-            console.log('Name: ' + getCharacterName + ' Stats: ' + getCharacterStats)
-        },
-        
-        //TODO: Skapa klass för items???
-    },
-    
-    
+    }   
 }
 </script>
 
@@ -54,27 +15,23 @@ export default {
     <div class="flexCenter">
 
         <div class="flexGap">
-            <RouterLink to="/fight">Fight</RouterLink>
-            <button>Generera gear</button>
-            <input type="text" id="name" v-model="characterName" required minlength="4" maxlength="16" size="10">
-            <button @click="saveCharacter">Save character</button>
-            <button @click="loadCharacter">Load storage</button>
-            <button @click="clearCharacter">Clear storage</button>
+            <RouterLink to="/fight" v-slot="{ navigate }" ><button @click={navigate}>Fight</button></RouterLink>
+            <RouterLink to="/gear" v-slot="{ navigate }" ><button @click={navigate}>Generera gear</button></RouterLink>
         </div>
-
-        <div class="theGrid">
-            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemHelmet" search="hjälm" />
-            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemArmor" search="tröja" />
-            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemSword" search="svärd" />
-            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemShield" search="sköld" />
-            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemLeggs" search="byxa" />
-            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemFeet" search="skor" />
+        <div class="flexCenter">
+            <p>You gotta fight! For your right to party! </p>
         </div>
 
     </div>
 </template>
 
 <style>
+p {
+    color: orangered;
+    font-size: x-large;
+    
+
+}
 .flexCenter {
     display: flex;
     flex-direction: column;
@@ -139,6 +96,7 @@ img {
     justify-self: center;
     align-self: center;
 }
+
 
 @media (max-width: 480px) {
     img {

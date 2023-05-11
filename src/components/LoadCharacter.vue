@@ -1,9 +1,10 @@
 <script>
 import TimeToFight from './TimeToFight.vue'
+import PictureBoxLoad from './PictureBoxLoad.vue'
 
 export default {
     components: {
-        TimeToFight
+        PictureBoxLoad, TimeToFight
     },
     data() {
         return {
@@ -20,20 +21,13 @@ export default {
                 const characterGear = localStorage.getItem(characterName)
                 this.characters.push({ name: characterName, gear: JSON.parse(characterGear) })
             }
-            console.log(this.characters)
         },
         setFigtherOne(char) {
             this.figtherOne = char
-
         },
         setFigtherTwo(char) {
             this.figtherTwo = char
         },
-        // combineStats() {
-        //     this.totalStats = 0
-        //     for (const item of this.items) {
-        //         this.totalStats += item.itemStat
-        //     }
     },
     mounted() {
         this.loadAllCharacters()
@@ -45,9 +39,9 @@ export default {
     <div>
         <h1>Pick a worthy opponent!</h1>
         <div>
+
             <div class="flex">
                 <ul>
-                    <!-- TODO: Fixa key:ed value -->
                     <h2>Figther 1!</h2>
                     <fieldset class="bg">
                         <div>Chosen figther: {{ figtherOne.name }}</div>
@@ -55,12 +49,13 @@ export default {
                     <li class="bg" @click="setFigtherOne(char)" v-for="char in characters" :key="char.name">
                         {{ char.name }}
                     </li>
-                    <!-- bilder för figther1 i en pictureboxLoad -->
                 </ul>
+                <div>
+                    <PictureBoxLoad :gearObject="figtherOne" />
+                </div>
             </div>
             <div class="flex">
                 <ul>
-                    <!-- TODO: Fixa key:ed value -->
                     <h2>Figther 2!</h2>
                     <fieldset class="bg">
                         <div>Chosen figther: {{ figtherTwo.name }}</div>
@@ -68,12 +63,13 @@ export default {
                     <li class="bg" @click="setFigtherTwo(char)" v-for="char in characters" :key="char.name">
                         {{ char.name }}
                     </li>
-
-                    <!-- bilder för figther2 i en pictureboxLoad -->
                 </ul>
+                <div>
+                    <PictureBoxLoad :gearObject="figtherTwo" />
+                </div>
             </div>
         </div>
-        <TimeToFight :characterOne="figtherOne" :characterTwo="figtherTwo"/>
+        <TimeToFight :characterOne="figtherOne" :characterTwo="figtherTwo" />
     </div>
 </template>
 
@@ -90,7 +86,9 @@ li {
 
 .flex {
     display: flex;
-    justify-content: start;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
 }
 
 .bg {

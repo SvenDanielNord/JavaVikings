@@ -1,6 +1,7 @@
 <script>
 import { RouterLink } from 'vue-router'
 import PictureBox from '../components/PictureBox.vue';
+import Gear from '../data/Gear'
 
 
 export default {
@@ -10,32 +11,38 @@ export default {
     },
     data() {
         return {
-            items:
-                [{ itemName: "hjälm", itemStat: 0 },
-                { itemName: "tröja", itemStat: 0 },
-                { itemName: "svärd", itemStat: 0 },
-                { itemName: "sköld", itemStat: 0 },
-                { itemName: "byxa", itemStat: 0 },
-                { itemName: "skor", itemStat: 0 }],
-
-            characterName: '',
+            items: [],
+            numberOfGears: null,
+        //     [
+        //     {itemName: "tröja", itemStat: 0},
+        //     {itemName: "svärd", itemStat: 0},
+        //     {itemName: "sköld", itemStat: 0},
+        //     {itemName: "byxa", itemStat: 0},
+        //     {itemName: "skor", itemStat: 0},
+        //    new Gear("hjälm" , 3)],
+            characterName: "",
             totalStats: 0,
         }
     },
     methods: {
         updateItems(stat, name) {
-            for (const item of this.items) {
-                if (item.itemName === name) {
-                    item.itemStat = stat
-                }
+              
+            if(this.items.length < 6){
+                this.items.push(new Gear(name,stat))
             }
-
+            for (const item of this.items) {
+                if(item.name === name){
+                    item.stat = stat
+                    
+                }               
+            }           
             this.combineStats()
         },
         combineStats() {
             this.totalStats = 0
             for (const item of this.items) {
-                this.totalStats += item.itemStat
+                this.totalStats += item.stat
+                
 
             }
         },
@@ -50,9 +57,11 @@ export default {
             const getCharacterStats = localStorage.getItem(getCharacterName)
             console.log('Name: ' + getCharacterName + ' Stats: ' + getCharacterStats)
         },
-
+        
         //TODO: Skapa klass för items???
     },
+    
+    
 }
 </script>
 
@@ -68,7 +77,7 @@ export default {
             <button @click="clearCharacter">Clear storage</button>
         </div>
 
-        <div class="theGrid">
+        <div id="itemList" class="theGrid">
             <PictureBox @stat="(stat, name) => updateItems(stat, name)" class="itemHelmet" search="hjälm" />
             <PictureBox @stat="(stat, name) => updateItems(stat, name)" class="itemArmor" search="tröja" />
             <PictureBox @stat="(stat, name) => updateItems(stat, name)" class="itemSword" search="svärd" />

@@ -49,6 +49,7 @@ export default {
         emitStats() {
             this.$emit('stat', this.stats, this.search)
         },
+        
     },
 
     async mounted() {

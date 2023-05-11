@@ -10,21 +10,22 @@ export default {
     },
     data() {
         return {
-            items: 
-            [{itemName: "hjälm", itemStat: 0},
-            {itemName: "tröja", itemStat: 0},
-            {itemName: "svärd", itemStat: 0},
-            {itemName: "sköld", itemStat: 0},
-            {itemName: "byxa", itemStat: 0},
-            {itemName: "skor", itemStat: 0}],
+            items:
+                [{ itemName: "hjälm", itemStat: 0 },
+                { itemName: "tröja", itemStat: 0 },
+                { itemName: "svärd", itemStat: 0 },
+                { itemName: "sköld", itemStat: 0 },
+                { itemName: "byxa", itemStat: 0 },
+                { itemName: "skor", itemStat: 0 }],
 
+            characterName: '',
             totalStats: 0,
         }
     },
     methods: {
         updateItems(stat, name) {
             for (const item of this.items) {
-                if(item.itemName === name){
+                if (item.itemName === name) {
                     item.itemStat = stat
                 }
             }
@@ -37,7 +38,17 @@ export default {
                 this.totalStats += item.itemStat
 
             }
-            console.log("TotalStats is: " + this.totalStats)
+        },
+        saveCharacter() {
+            localStorage.setItem(this.characterName, this.totalStats)
+        },
+        clearCharacter() {
+            localStorage.clear()
+        },
+        loadCharacter() {
+            const getCharacterName = this.characterName
+            const getCharacterStats = localStorage.getItem(getCharacterName)
+            console.log('Name: ' + getCharacterName + ' Stats: ' + getCharacterStats)
         },
 
         //TODO: Skapa klass för items???
@@ -49,8 +60,12 @@ export default {
     <div class="flexCenter">
 
         <div class="flexGap">
-            <RouterLink to="/about">About</RouterLink>
+            <RouterLink to="/fight">Fight</RouterLink>
             <button>Generera gear</button>
+            <input type="text" id="name" v-model="characterName" required minlength="4" maxlength="16" size="10">
+            <button @click="saveCharacter">Save character</button>
+            <button @click="loadCharacter">Load storage</button>
+            <button @click="clearCharacter">Clear storage</button>
         </div>
 
         <div class="theGrid">

@@ -11,6 +11,7 @@ import { RouterView } from 'vue-router'
 
   <div class="flexCenter">
     <h1>JavaVikings</h1>
+    <!-- Lägg nav knapparna här istället. -->
     <RouterView />
   </div>
 

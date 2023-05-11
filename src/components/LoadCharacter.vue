@@ -1,7 +1,12 @@
 <script>
 import { getLocation } from '../data/FetchLocation.js'
+import PictureBoxLoad from './PictureBoxLoad.vue'
+
 
 export default {
+    components:{
+        PictureBoxLoad
+    },
     data() {
         return {
             location: null,
@@ -46,6 +51,7 @@ export default {
     <div>
         <h1>Pick a worthy opponent!</h1>
         <div>
+
             <div class="flex">
                 <ul>
                     <!-- TODO: Fixa key:ed value -->
@@ -56,8 +62,11 @@ export default {
                     <li class="bg" @click="setFigtherOne(char)" v-for="char in characters">
                         {{ char.name }}
                     </li>
-                    <!-- bilder för figther1 i en pictureboxLoad -->
                 </ul>
+                <!-- bilder för figther1 i en pictureboxLoad -->
+                <div>
+                    <PictureBoxLoad />
+                </div>
             </div>
             <div class="flex">
                 <ul>
@@ -69,9 +78,11 @@ export default {
                     <li class="bg" @click="setFigtherTwo(char)" v-for="char in characters">
                         {{ char.name }}
                     </li>
-
-                    <!-- bilder för figther2 i en pictureboxLoad -->
                 </ul>
+                <!-- bilder för figther2 i en pictureboxLoad -->
+                <div>
+                    <PictureBoxLoad />
+                </div>
             </div>
         </div>
     </div>
@@ -90,7 +101,9 @@ li {
 
 .flex {
     display: flex;
-    justify-content: start;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
 }
 
 .bg {

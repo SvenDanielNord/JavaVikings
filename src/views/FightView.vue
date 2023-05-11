@@ -18,7 +18,7 @@ export default {
 
 <template>
     <div>
-        <LoadCharacters />
         <RouterLink to="/">Home</RouterLink>
+        <LoadCharacters />
     </div>
 </template>

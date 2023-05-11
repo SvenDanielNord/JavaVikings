@@ -1,7 +1,6 @@
 <script>
 import { RouterLink } from 'vue-router'
 import PictureBox from '../components/PictureBox.vue';
-import Gear from '../data/Gear'
 
 
 export default {
@@ -11,43 +10,29 @@ export default {
     },
     data() {
         return {
-            items: [],
-            numberOfGears: null,
-        //     [
-        //     {itemName: "tröja", itemStat: 0},
-        //     {itemName: "svärd", itemStat: 0},
-        //     {itemName: "sköld", itemStat: 0},
-        //     {itemName: "byxa", itemStat: 0},
-        //     {itemName: "skor", itemStat: 0},
-        //    new Gear("hjälm" , 3)],
-            characterName: "",
+            items:
+                [{ itemName: "hjälm", itemStat: 0, url: "" },
+                { itemName: "tröja", itemStat: 0, url: "" },
+                { itemName: "svärd", itemStat: 0, url: "" },
+                { itemName: "sköld", itemStat: 0, url: "" },
+                { itemName: "byxa", itemStat: 0, url: "" },
+                { itemName: "skor", itemStat: 0, url: "" }],
+
+            characterName: '',
             totalStats: 0,
         }
     },
     methods: {
-        updateItems(stat, name) {
-              
-            if(this.items.length < 6){
-                this.items.push(new Gear(name,stat))
-            }
+        updateItems(stat, name, url) {
             for (const item of this.items) {
-                if(item.name === name){
-                    item.stat = stat
-                    
-                }               
-            }           
-            this.combineStats()
-        },
-        combineStats() {
-            this.totalStats = 0
-            for (const item of this.items) {
-                this.totalStats += item.stat
-                
-
+                if (item.itemName === name) {
+                    item.itemStat = stat
+                    item.url = url
+                }
             }
         },
         saveCharacter() {
-            localStorage.setItem(this.characterName, this.totalStats)
+            localStorage.setItem(this.characterName, JSON.stringify(this.items))
         },
         clearCharacter() {
             localStorage.clear()
@@ -77,13 +62,13 @@ export default {
             <button @click="clearCharacter">Clear storage</button>
         </div>
 
-        <div id="itemList" class="theGrid">
-            <PictureBox @stat="(stat, name) => updateItems(stat, name)" class="itemHelmet" search="hjälm" />
-            <PictureBox @stat="(stat, name) => updateItems(stat, name)" class="itemArmor" search="tröja" />
-            <PictureBox @stat="(stat, name) => updateItems(stat, name)" class="itemSword" search="svärd" />
-            <PictureBox @stat="(stat, name) => updateItems(stat, name)" class="itemShield" search="sköld" />
-            <PictureBox @stat="(stat, name) => updateItems(stat, name)" class="itemLeggs" search="byxa" />
-            <PictureBox @stat="(stat, name) => updateItems(stat, name)" class="itemFeet" search="skor" />
+        <div class="theGrid">
+            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemHelmet" search="hjälm" />
+            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemArmor" search="tröja" />
+            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemSword" search="svärd" />
+            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemShield" search="sköld" />
+            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemLeggs" search="byxa" />
+            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemFeet" search="skor" />
         </div>
 
     </div>

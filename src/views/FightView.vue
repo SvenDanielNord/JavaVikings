@@ -18,7 +18,7 @@ export default {
 
 <template>
     <div>
-        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/" v-slot="{ navigate }" ><button @click={navigate}>Home</button></RouterLink>
         <LoadCharacters />
     </div>
 </template>

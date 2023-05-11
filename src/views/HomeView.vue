@@ -30,16 +30,9 @@ export default {
                     item.url = url
                 }
             }
-            this.combineStats()
-        },
-        combineStats() {
-            this.totalStats = 0
-            for (const item of this.items) {
-                this.totalStats += item.itemStat
-            }
         },
         saveCharacter() {
-            localStorage.setItem(this.characterName, this.items) //Skicka med hela listan istället för stats där nu även url finns med.
+            localStorage.setItem(this.characterName, JSON.stringify(this.items))
         },
         clearCharacter() {
             localStorage.clear()

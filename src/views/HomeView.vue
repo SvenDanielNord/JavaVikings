@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 import { RouterLink } from 'vue-router'
 
 
@@ -6,23 +6,19 @@ import { RouterLink } from 'vue-router'
 
 export default {
     components: {
-        RouterLink,
+        
     }   
 }
-</script>
+</script> -->
 
 <template>
-    <div class="flexCenter">
+     
 
-        <div class="flexGap">
-            <RouterLink to="/fight" v-slot="{ navigate }" ><button @click={navigate}>Fight</button></RouterLink>
-            <RouterLink to="/gear" v-slot="{ navigate }" ><button @click={navigate}>Generera gear</button></RouterLink>
-        </div>
-        <div class="flexCenter">
+        <div class="container col-12 text-center">
             <p>You gotta fight! For your right to party! </p>
         </div>
 
-    </div>
+   
 </template>
 
 <style>
@@ -32,7 +28,7 @@ p {
     
 
 }
-.flexCenter {
+/* .flexCenter {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -110,5 +106,5 @@ img {
         height: 200px;
         width: 200px;
     }
-}
+} */
 </style>

@@ -51,33 +51,47 @@ export default {
 </script>
 
 <template>
-    <div class="flexCenter">
+            <div class="col">
+                <RouterLink to="/fight" v-slot="{ navigate }"><button class="btn btn-danger" @click="navigate">Fight</button></RouterLink>
 
-        <div class="flexGap">
-            <RouterLink to="/" v-slot="{ navigate }" ><button @click={navigate}>Home</button></RouterLink>
-            <RouterLink to="/fight" v-slot="{ navigate }" ><button @click={navigate}>Fight</button></RouterLink>
-            
-            <button>Generera gear</button>
-            <input type="text" id="name" v-model="characterName" required minlength="4" maxlength="16" size="10">
-            <button @click="saveCharacter">Save character</button>
-            <button @click="loadCharacter">Load storage</button>
-            <button @click="clearCharacter">Clear storage</button>
-        </div>
+            </div>
+            <div class="col">
+                <button class="btn btn-danger">Generera gear</button>
 
-        <div class="theGrid">
+            </div>
+            <div class="col">
+                <input type="text" id="name" v-model="characterName" required minlength="4" maxlength="16" size="10"> 
+            </div>
+            <div class="col">
+                <button button class="btn btn-danger"  @click="saveCharacter">Save character</button>
+            </div>
+            <div class="col">
+                
+                <button button class="btn btn-danger"  @click="loadCharacter">Load storage</button>
+            </div>
+            <div class="col">
+                
+                <button  button class="btn btn-danger" @click="clearCharacter">Clear storage</button>
+            </div>
+        
+
+        <div class="container col-12 text-center">
             <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemHelmet" search="hjälm" />
             <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemArmor" search="tröja" />
-            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemSword" search="svärd" />
-            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemShield" search="sköld" />
+            <div class="row justify-content-center row-cols-auto">
+                <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemSword" search="svärd" />
+                <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemShield" search="sköld" />
+            </div>
+            
             <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemLeggs" search="byxa" />
             <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemFeet" search="skor" />
         </div>
 
-    </div>
+    
 </template>
 
 <style>
-.flexCenter {
+/* .flexCenter {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -154,5 +168,5 @@ img {
         height: 200px;
         width: 200px;
     }
-}
+} */
 </style>

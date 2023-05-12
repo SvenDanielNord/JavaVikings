@@ -3,10 +3,10 @@
 
 <script>
 import { searchForThing } from '../data/FetchData.js'
-import LoadSpin from './LoadSpin.vue'
+
 
 export default {
-    components: { LoadSpin },
+    
     props: ["search"],
     emits: ["stat"],
 
@@ -62,9 +62,7 @@ export default {
 
 </script>
 <template>
-    <div v-if="loading">
-        <LoadSpin />
-    </div>
-    <div v-else><a @click="fetchUrl(search)" :title="title"><img :src="this.url" alt=""></a></div>
+    <div class="spinner-border m-5" v-if="loading"></div>
+    <div class="col" v-else><a @click="fetchUrl(search)" :title="title"><img class="img-fluid" style="width: 125px; height: 125px;"  :src="this.url" alt=""></a></div>
 </template>
 

@@ -12,7 +12,7 @@ import { RouterView } from 'vue-router'
   <h1>JavaVikings</h1>
   </div>
   <div class="container d-flex justify-content-center">
-    <div class="row justify-content-center row-cols-auto">
+    <div class="menu row justify-content-center row-cols-auto">
       <div class="col">
         <RouterLink to="/" v-slot="{ navigate }"><button class="btn btn-danger" @click="navigate">Home</button></RouterLink>
       </div>

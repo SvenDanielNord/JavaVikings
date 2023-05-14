@@ -42,52 +42,58 @@ export default {
             const getCharacterStats = localStorage.getItem(getCharacterName)
             console.log('Name: ' + getCharacterName + ' Stats: ' + getCharacterStats)
         },
-        
+
         //TODO: Skapa klass för items???
     },
-    
-    
+
+
 }
 </script>
 
 <template>
-            <div class="col">
-                <RouterLink to="/fight" v-slot="{ navigate }"><button class="btn btn-danger" @click="navigate">Fight</button></RouterLink>
+    <div class="col">
+        <RouterLink to="/fight" v-slot="{ navigate }"><button class="btn btn-danger" @click="navigate">Fight</button>
+        </RouterLink>
 
-            </div>
-            <div class="col">
-                <button class="btn btn-danger">Generera gear</button>
+    </div>
+    <div class="col">
+        <button class="btn btn-danger">Generera gear</button>
 
-            </div>
-            <div class="col">
-                <input type="text" id="name" v-model="characterName" required minlength="4" maxlength="16" size="10"> 
-            </div>
-            <div class="col">
-                <button button class="btn btn-danger"  @click="saveCharacter">Save character</button>
-            </div>
-            <div class="col">
-                
-                <button button class="btn btn-danger"  @click="loadCharacter">Load storage</button>
-            </div>
-            <div class="col">
-                
-                <button  button class="btn btn-danger" @click="clearCharacter">Clear storage</button>
-            </div>
-        
-
-        <div class="container col-12 text-center">
-            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemHelmet" search="hjälm" />
-            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemArmor" search="tröja" />
-            <div class="row justify-content-center row-cols-auto">
-                <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemSword" search="svärd" />
-                <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemShield" search="sköld" />
-            </div>
+    </div>
+    <div class="col">
+        <div class=" mb-3 input-group">
+    
+            <button button class="btn btn-danger "  @click="saveCharacter">Save</button>
+            <input type="text" class="form-group" id="name" v-model="characterName" required minlength="4" maxlength="16" size="11" placeholder="Character name" aria-label="Save" aria-describedby="basic-addon1">
             
-            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemLeggs" search="byxa" />
-            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemFeet" search="skor" />
+            <!-- <input type="text" id="name" v-model="characterName" required minlength="4" maxlength="16" size="10">  -->
         </div>
 
-    
+    </div>
+    <!-- <div class="col">
+                <button button class="btn btn-danger"  @click="saveCharacter">Save character</button>
+            </div> -->
+    <div class="col">
+
+        <button button class="btn btn-danger" @click="loadCharacter">Load storage</button>
+    </div>
+    <div class="col">
+
+        <button button class="btn btn-danger" @click="clearCharacter">Clear storage</button>
+    </div>
+
+
+    <div class="container col-12 text-center">
+        <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemHelmet" search="hjälm" />
+        <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemArmor" search="tröja" />
+        <div class="row justify-content-center row-cols-auto">
+            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemSword" search="svärd" />
+            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemShield" search="sköld" />
+        </div>
+
+        <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemLeggs" search="byxa" />
+        <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemFeet" search="skor" />
+    </div>
 </template>
 
 <style>

@@ -7,7 +7,7 @@ import { RouterView } from 'vue-router'
 
 </script>
   
-<template>
+<template> 
   <div class="container">
     <div class="menu row">
 
@@ -15,8 +15,13 @@ import { RouterView } from 'vue-router'
         <h1>JavaVikings</h1>
       </div>
 
+<<<<<<< Updated upstream
       <div class="col-4 text-end">
         <RouterLink to="/" v-slot="{ navigate }"><button class="btn btn-danger" @click="navigate">Home</button>
+=======
+      <div class="col-4">
+        <RouterLink to="/" v-slot="{ navigate }"><button class="btn btn-danger active" @click="navigate" >Home</button>
+>>>>>>> Stashed changes
         </RouterLink>
       </div>
 

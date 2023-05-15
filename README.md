@@ -3,7 +3,7 @@
 This template should help get you started developing with Vue 3 in Vite.
 ## Netlify url
 
-https://storied-toffee-28c2ca.netlify.app
+https://java-vikings.netlify.app/
 
 ## Recommended IDE Setup
 

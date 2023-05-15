@@ -42,27 +42,48 @@ export default {
 
             <div class="flex">
                 <ul>
-                    <h2>Figther 1!</h2>
                     <fieldset class="bg">
                         <div>Chosen figther: {{ figtherOne.name }}</div>
                     </fieldset>
-                    <li class="bg" @click="setFigtherOne(char)" v-for="char in characters" :key="char.name">
-                        {{ char.name }}
-                    </li>
+
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Fighter 1
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item" @click="setFigtherOne(char)" v-for="char in characters"
+                                :key="char.name">
+                                {{ char.name }}
+                            </li>
+                        </ul>
+                    </div>
                 </ul>
                 <div>
                     <PictureBoxLoad :gearObject="figtherOne" />
                 </div>
             </div>
+
+
+
             <div class="flex">
                 <ul>
-                    <h2>Figther 2!</h2>
                     <fieldset class="bg">
                         <div>Chosen figther: {{ figtherTwo.name }}</div>
                     </fieldset>
-                    <li class="bg" @click="setFigtherTwo(char)" v-for="char in characters" :key="char.name">
-                        {{ char.name }}
-                    </li>
+
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Fighter 2
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item" @click="setFigtherTwo(char)" v-for="char in characters"
+                                :key="char.name">
+                                {{ char.name }}
+                            </li>
+                        </ul>
+                    </div>
                 </ul>
                 <div>
                     <PictureBoxLoad :gearObject="figtherTwo" />
@@ -89,9 +110,5 @@ li {
     justify-content: center;
     align-items: center;
     gap: 5rem;
-}
-
-.bg {
-    background-color: aliceblue;
 }
 </style>

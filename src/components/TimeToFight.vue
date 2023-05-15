@@ -15,86 +15,78 @@ export default {
                 name: null,
                 stats: null
             },
-            partOneMessages: [
-                "In the midst of a serene afternoon in",
-                "Under the clear blue sky of",
-                "Amidst the serene beauty of",
-                "In a peaceful corner of",
-                "Surrounded by tranquility in"
-            ],
-            partTwoMessages: [
-                "relishes the tranquility until an unexpected encounter with",
-                "basks in the peaceful ambiance until the unexpected arrival of",
-                "enjoys a moment of serenity until",
-                "finds solace in the calmness until",
-                "is at peace until"
-            ],
-            partThreeMessages: [
-                "shatters the silence.",
-                "sparks tension in the air.",
-                "breaks the calmness.",
-                "disturbs the peaceful atmosphere.",
-                "disrupts the tranquility."
-            ],
-            partFourMessages: [
-                "Fixing their gaze upon one another, both fighters lock eyes, their hands instinctively reaching for their swords.",
-                "Their eyes meet in a moment of silent understanding as they simultaneously unsheathe their blades, preparing for the impending clash.",
-                "With an intense stare, the fighters engage in a wordless exchange, drawing their swords in perfect synchronization.",
-                "Their eyes lock in a fierce gaze as they prepare for an intense battle, their weapons ready.",
-                "As tension builds, the fighters share a determined look, knowing what lies ahead."
-            ],
-            partFiveMessages: [
-                "Swift and precise,",
-                "With a sudden burst of energy,",
-                "Quick and agile,",
-                "In a graceful motion,",
-                "Like a whirlwind,"
-            ],
-            partSixMessages: [
-                "executes a calculated strike, momentarily disrupting",
-                "delivers a staggering blow that momentarily staggers",
-                "lands a well-aimed attack, momentarily disorienting",
-                "launches a powerful assault, momentarily overwhelming",
-                "strikes with precision, momentarily throwing off"
-            ],
-            partSevenMessages: [
-                "'s balance. Yet,",
-                ". But",
-                "'s equilibrium. However,",
-                ". Nonetheless,",
-                "'s stability. Still,"
-            ],
-            partEightMessages: [
-                "swiftly regains composure and retaliates with a swift counterattack.",
-                "swiftly recovers, launching a relentless counter-assault.",
-                "proves their resilience, quickly retaliating with a formidable strike.",
-                "counterattacks with lightning speed, catching the opponent off guard.",
-                "recovers swiftly and counterstrikes with exceptional agility."
-            ],
-            partNineMessages: [
-                "Following a grueling and monotonous battle,",
-                "In an arduous and tedious struggle,",
-                "After enduring a prolonged and mind-numbing duel,",
-                "Having fought relentlessly in an exhausting encounter,",
-                "In a battle that seemed never-ending,"
-            ],
-            partTenMessages: [
-                "emerges triumphant, ending the fight by severing the head of",
-                "ultimately prevails, putting an end to the fight by beheading",
-                "triumphs over the opponent, leaving them defeated",
-                "prevails in the fight, proving their superiority against",
-                "claims victory, bringing an end to the battle with"
-            ],
-            partOne: null,
-            partTwo: null,
-            partThree: null,
-            partFour: null,
-            partFive: null,
-            partSix: null,
-            partSeven: null,
-            partEight: null,
-            partNine: null,
-            partTen: null,
+            messages: {
+                partOne: [
+                    "In the midst of a serene afternoon in",
+                    "Under the clear blue sky of",
+                    "Amidst the serene beauty of",
+                    "In a peaceful corner of",
+                    "Surrounded by tranquility in"
+                ],
+                partTwo: [
+                    "relishes the tranquility until an unexpected encounter with",
+                    "basks in the peaceful ambiance until the unexpected arrival of",
+                    "enjoys a moment of serenity until",
+                    "finds solace in the calmness until",
+                    "is at peace until"
+                ],
+                partThree: [
+                    "shatters the silence.",
+                    "sparks tension in the air.",
+                    "breaks the calmness.",
+                    "disturbs the peaceful atmosphere.",
+                    "disrupts the tranquility."
+                ],
+                partFour: [
+                    "Fixing their gaze upon one another, both fighters lock eyes, their hands instinctively reaching for their swords.",
+                    "Their eyes meet in a moment of silent understanding as they simultaneously unsheathe their blades, preparing for the impending clash.",
+                    "With an intense stare, the fighters engage in a wordless exchange, drawing their swords in perfect synchronization.",
+                    "Their eyes lock in a fierce gaze as they prepare for an intense battle, their weapons ready.",
+                    "As tension builds, the fighters share a determined look, knowing what lies ahead."
+                ],
+                partFive: [
+                    "Swift and precise,",
+                    "With a sudden burst of energy,",
+                    "Quick and agile,",
+                    "In a graceful motion,",
+                    "Like a whirlwind,"
+                ],
+                partSix: [
+                    "executes a calculated strike, momentarily disrupting",
+                    "delivers a staggering blow that momentarily staggers",
+                    "lands a well-aimed attack, momentarily disorienting",
+                    "launches a powerful assault, momentarily overwhelming",
+                    "strikes with precision, momentarily throwing off"
+                ],
+                partSeven: [
+                    "'s balance. Yet,",
+                    ". But",
+                    "'s equilibrium. However,",
+                    ". Nonetheless,",
+                    "'s stability. Still,"
+                ],
+                partEight: [
+                    "swiftly regains composure and retaliates with a swift counterattack.",
+                    "swiftly recovers, launching a relentless counter-assault.",
+                    "proves their resilience, quickly retaliating with a formidable strike.",
+                    "counterattacks with lightning speed, catching the opponent off guard.",
+                    "recovers swiftly and counterstrikes with exceptional agility."
+                ],
+                partNine: [
+                    "Following a grueling and monotonous battle,",
+                    "In an arduous and tedious struggle,",
+                    "After enduring a prolonged and mind-numbing duel,",
+                    "Having fought relentlessly in an exhausting encounter,",
+                    "In a battle that seemed never-ending,"
+                ],
+                partTen: [
+                    "emerges triumphant, ending the fight by severing the head of",
+                    "ultimately prevails, putting an end to the fight by beheading",
+                    "triumphs over the opponent, leaving them defeated",
+                    "prevails in the fight, proving their superiority against",
+                    "claims victory, bringing an end to the battle with"
+                ],
+            },
             triggerTextBox: false,
             triggerTextTwo: false,
             triggerTextThree: false,
@@ -131,16 +123,16 @@ export default {
             this.loser = this.fighterOne.stats > this.fighterTwo.stats ? this.fighterTwo.name : this.fighterOne.name;
         },
         setText() {
-            this.partOne = this.partOneMessages[Math.floor(Math.random() * this.partOneMessages.length)]
-            this.partTwo = this.partTwoMessages[Math.floor(Math.random() * this.partTwoMessages.length)]
-            this.partThree = this.partThreeMessages[Math.floor(Math.random() * this.partThreeMessages.length)]
-            this.partFour = this.partFourMessages[Math.floor(Math.random() * this.partFourMessages.length)]
-            this.partFive = this.partFiveMessages[Math.floor(Math.random() * this.partFiveMessages.length)]
-            this.partSix = this.partSixMessages[Math.floor(Math.random() * this.partSixMessages.length)]
-            this.partSeven = this.partSevenMessages[Math.floor(Math.random() * this.partSevenMessages.length)]
-            this.partEight = this.partEightMessages[Math.floor(Math.random() * this.partEightMessages.length)]
-            this.partNine = this.partNineMessages[Math.floor(Math.random() * this.partNineMessages.length)]
-            this.partTen = this.partTenMessages[Math.floor(Math.random() * this.partTenMessages.length)]
+            this.partOne = this.messages.partOne[Math.floor(Math.random() * this.messages.partOne.length)]
+            this.partTwo = this.messages.partTwo[Math.floor(Math.random() * this.messages.partTwo.length)]
+            this.partThree = this.messages.partThree[Math.floor(Math.random() * this.messages.partThree.length)]
+            this.partFour = this.messages.partFour[Math.floor(Math.random() * this.messages.partFour.length)]
+            this.partFive = this.messages.partFive[Math.floor(Math.random() * this.messages.partFive.length)]
+            this.partSix = this.messages.partSix[Math.floor(Math.random() * this.messages.partSix.length)]
+            this.partSeven = this.messages.partSeven[Math.floor(Math.random() * this.messages.partSeven.length)]
+            this.partEight = this.messages.partEight[Math.floor(Math.random() * this.messages.partEight.length)]
+            this.partNine = this.messages.partNine[Math.floor(Math.random() * this.messages.partNine.length)]
+            this.partTen = this.messages.partTen[Math.floor(Math.random() * this.messages.partTen.length)]
             this.triggerText()
         },
         triggerText() {

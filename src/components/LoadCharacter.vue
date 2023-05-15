@@ -45,7 +45,7 @@ export default {
                     <div>Chosen figther: {{ figtherOne.name }}</div>
                 </fieldset>
 
-                <div class="dropdown">
+                <div class="p1 dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     Fighter 1

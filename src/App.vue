@@ -9,24 +9,24 @@ import { RouterView } from 'vue-router'
   
 <template>
   <div class="container">
-    <div class="menu row text-center">
+    <div class="menu row">
 
-      <div class="col-12">
+      <div class="col-12 text-center">
         <h1>JavaVikings</h1>
       </div>
 
-      <div class="col-4">
+      <div class="col-4 text-end">
         <RouterLink to="/" v-slot="{ navigate }"><button class="btn btn-danger" @click="navigate">Home</button>
         </RouterLink>
       </div>
 
-      <div class="col-4">
+      <div class="col-4 text-center">
         <RouterLink to="/gear" v-slot="{ navigate }"><button class="btn btn-danger" @click="navigate">Generate
             Gear</button></RouterLink>
 
       </div>
 
-      <div class="col-4">
+      <div class="col-4 text-start">
         <RouterLink to="/fight" v-slot="{ navigate }"><button class="btn btn-danger" @click="navigate">Fight</button>
         </RouterLink>
       </div>

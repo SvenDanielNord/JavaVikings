@@ -40,24 +40,24 @@ export default {
 
         <div>
 
-            <ul>
+            <div>
                 <fieldset>
                     <div>Chosen figther: {{ figtherOne.name }}</div>
                 </fieldset>
 
                 <div class="p1 dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Fighter 1
-                </button>
-                <!-- Denna skall ha en egen container? -->
+                        aria-expanded="false">
+                        Fighter 1
+                    </button>
+                    <!-- Denna skall ha en egen container? -->
                     <ul class="dropdown-menu">
                         <li class="dropdown-item" @click="setFigtherOne(char)" v-for="char in characters" :key="char.name">
                             {{ char.name }}
                         </li>
                     </ul>
                 </div>
-            </ul>
+            </div>
 
             <div>
                 <PictureBoxLoad :gearObject="figtherOne" />
@@ -65,7 +65,7 @@ export default {
         </div>
 
         <div>
-            <ul>
+            <div>
                 <fieldset>
                     <div>Chosen figther: {{ figtherTwo.name }}</div>
                 </fieldset>
@@ -81,7 +81,7 @@ export default {
                         </li>
                     </ul>
                 </div>
-            </ul>
+            </div>
             <div>
                 <PictureBoxLoad :gearObject="figtherTwo" />
             </div>
@@ -91,6 +91,33 @@ export default {
         <div>
             <TimeToFight :characterOne="figtherOne" :characterTwo="figtherTwo" />
         </div>
+
+        <!-- <div class="container">
+            <div class="row">
+                <div class="col">
+                    asd
+                </div>
+                <div class="col">
+                    asd
+                </div>
+                <div class="col">
+                    asd
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    asd
+                </div>
+                <div class="col">
+                    asd
+                </div>
+                <div class="col">
+                    asd
+                </div>
+            </div>
+
+        </div> -->
 
     </div>
 </template>
@@ -104,5 +131,4 @@ div {
 li {
     list-style: none;
     cursor: pointer;
-}
-</style>
+}</style>

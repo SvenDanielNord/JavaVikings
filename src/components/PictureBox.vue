@@ -23,10 +23,10 @@ export default {
         async fetchUrl(search) {
             this.loading = true
             let response = await searchForThing(search)
-            this.loading = false
             while (response.url.includes("emuseumplus") || response.url.includes("collections")) {
                 response = await searchForThing(search)
             }
+            this.loading = false
             this.url = response.url
             this.checkDescription(response.description)
             this.generateStats()

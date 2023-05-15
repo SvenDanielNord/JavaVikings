@@ -15,7 +15,6 @@ export default {
                 name: null,
                 stats: null
             },
-            trigger: false,
             partOneMessages: [
                 "In the midst of a serene afternoon in",
                 "Under the clear blue sky of",
@@ -86,7 +85,6 @@ export default {
                 "prevails in the fight, proving their superiority against",
                 "claims victory, bringing an end to the battle with"
             ],
-
             partOne: null,
             partTwo: null,
             partThree: null,
@@ -96,7 +94,10 @@ export default {
             partSeven: null,
             partEight: null,
             partNine: null,
-            partTen: null
+            partTen: null,
+            triggerTextBox: false,
+            triggerTextTwo: false,
+            triggerTextThree: false,
         }
     },
     props: {
@@ -129,11 +130,7 @@ export default {
             this.winner = this.fighterOne.stats > this.fighterTwo.stats ? this.fighterOne.name : this.fighterTwo.name;
             this.loser = this.fighterOne.stats > this.fighterTwo.stats ? this.fighterTwo.name : this.fighterOne.name;
         },
-        triggerText() {
-            this.trigger = true
-        },
         setPartOne() {
-            console.log(this.partOneMessages[Math.floor(Math.random() * this.partOneMessages.length)])
             this.partOne = this.partOneMessages[Math.floor(Math.random() * this.partOneMessages.length)]
         },
         setPartTwo() {
@@ -175,6 +172,18 @@ export default {
             this.setPartNine()
             this.setPartTen()
             this.triggerText()
+        },
+        triggerText() {
+            this.triggerTextBox = true
+            setTimeout(() => {
+                this.triggerTextTwo = true
+                this.triggerPartThree()
+            }, 5000)
+        },
+        triggerPartThree() {
+            setTimeout(() => {
+                this.triggerTextThree = true
+            }, 5000)
         }
     }
 }
@@ -183,12 +192,18 @@ export default {
 <template>
     <div>
         <button @click="startFight()">Fight!</button>
-        <div v-if="trigger" class="letMeSeeSomething">
-            {{ partOne }} {{ location }}, {{ fighterOne.name }} {{ partTwo }} {{ fighterTwo.name }} {{ partThree }}<br>
-            {{ partFour }}
-            {{ partFive }} {{ fighterOne.name }} {{ partSix }} {{ fighterTwo.name }} {{ partSeven }} {{ fighterTwo.name }}
-            {{ partEight }}
-            {{ partNine }} {{ winner }} {{ partTen }} {{ loser }}
+        <div v-if="triggerTextBox" class="letMeSeeSomething">
+            <div>
+                {{ partOne }} {{ location }}, {{ fighterOne.name }} {{ partTwo }} {{ fighterTwo.name }} {{ partThree }} {{
+                    partFour }}
+            </div>
+            <div v-if="triggerTextTwo">
+                {{ partFive }} {{ fighterOne.name }} {{ partSix }} {{ fighterTwo.name }} {{ partSeven }} {{ fighterTwo.name
+                }} {{ partEight }}
+            </div>
+            <div v-if="triggerTextThree">
+                {{ partNine }} {{ winner }} {{ partTen }} {{ loser }}
+            </div>
         </div>
     </div>
 </template>
@@ -196,5 +211,6 @@ export default {
 <style>
 .letMeSeeSomething {
     background-color: white;
+    font-family: 'Times New Roman', Times, serif;
 }
 </style>

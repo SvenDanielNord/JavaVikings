@@ -20,6 +20,11 @@ import { RouterView } from 'vue-router'
         <RouterLink to="/gear" v-slot="{ navigate }"><button class="btn btn-danger" @click="navigate">Generate Gear</button></RouterLink>
 
       </div>
+      <div class="col">
+        <RouterLink to="/fight" v-slot="{ navigate }"><button class="btn btn-danger" @click="navigate">Fight</button>
+        </RouterLink>
+
+    </div>
         <RouterView />
     </div>
     

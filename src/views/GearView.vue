@@ -1,11 +1,11 @@
 <script>
-import { RouterLink } from 'vue-router'
+
 import PictureBox from '../components/PictureBox.vue';
 
 
 export default {
     components: {
-        RouterLink,
+        
         PictureBox
     },
     data() {
@@ -51,32 +51,17 @@ export default {
 </script>
 
 <template>
-    <div class="col">
-        <RouterLink to="/fight" v-slot="{ navigate }"><button class="btn btn-danger" @click="navigate">Fight</button>
-        </RouterLink>
-
-    </div>
-    <div class="col">
-        <button class="btn btn-danger">Generera gear</button>
-
-    </div>
+   
+   
     <div class="col">
         <div class=" mb-3 input-group">
     
             <button button class="btn btn-danger "  @click="saveCharacter">Save</button>
             <input type="text" class="form-group" id="name" v-model="characterName" required minlength="4" maxlength="16" size="11" placeholder="Character name" aria-label="Save" aria-describedby="basic-addon1">
-            
-            <!-- <input type="text" id="name" v-model="characterName" required minlength="4" maxlength="16" size="10">  -->
         </div>
 
     </div>
-    <!-- <div class="col">
-                <button button class="btn btn-danger"  @click="saveCharacter">Save character</button>
-            </div> -->
-    <div class="col">
 
-        <button button class="btn btn-danger" @click="loadCharacter">Load storage</button>
-    </div>
     <div class="col">
 
         <button button class="btn btn-danger" @click="clearCharacter">Clear storage</button>

@@ -107,13 +107,13 @@ export default {
     methods: {
         startFight() {
             this.testLocation()
-            this.totalStats()
+            this.makePlayer()
             this.setText()
         },
         async testLocation() {
             this.location = await getLocation()
         },
-        totalStats() {
+        makePlayer() {
             this.fighterOne.stats = 0
             this.fighterOne.name = this.characterOne.name
             for (const fighter of this.characterOne.gear) {
@@ -130,47 +130,17 @@ export default {
             this.winner = this.fighterOne.stats > this.fighterTwo.stats ? this.fighterOne.name : this.fighterTwo.name;
             this.loser = this.fighterOne.stats > this.fighterTwo.stats ? this.fighterTwo.name : this.fighterOne.name;
         },
-        setPartOne() {
-            this.partOne = this.partOneMessages[Math.floor(Math.random() * this.partOneMessages.length)]
-        },
-        setPartTwo() {
-            this.partTwo = this.partTwoMessages[Math.floor(Math.random() * this.partTwoMessages.length)]
-        },
-        setPartThree() {
-            this.partThree = this.partThreeMessages[Math.floor(Math.random() * this.partThreeMessages.length)]
-        },
-        setPartFour() {
-            this.partFour = this.partFourMessages[Math.floor(Math.random() * this.partFourMessages.length)]
-        },
-        setPartFive() {
-            this.partFive = this.partFiveMessages[Math.floor(Math.random() * this.partFiveMessages.length)]
-        },
-        setPartSix() {
-            this.partSix = this.partSixMessages[Math.floor(Math.random() * this.partSixMessages.length)]
-        },
-        setPartSeven() {
-            this.partSeven = this.partSevenMessages[Math.floor(Math.random() * this.partSevenMessages.length)]
-        },
-        setPartEight() {
-            this.partEight = this.partEightMessages[Math.floor(Math.random() * this.partEightMessages.length)]
-        },
-        setPartNine() {
-            this.partNine = this.partNineMessages[Math.floor(Math.random() * this.partNineMessages.length)]
-        },
-        setPartTen() {
-            this.partTen = this.partTenMessages[Math.floor(Math.random() * this.partTenMessages.length)]
-        },
         setText() {
-            this.setPartOne()
-            this.setPartTwo()
-            this.setPartThree()
-            this.setPartFour()
-            this.setPartFive()
-            this.setPartSix()
-            this.setPartSeven()
-            this.setPartEight()
-            this.setPartNine()
-            this.setPartTen()
+            this.partOne = this.partOneMessages[Math.floor(Math.random() * this.partOneMessages.length)]
+            this.partTwo = this.partTwoMessages[Math.floor(Math.random() * this.partTwoMessages.length)]
+            this.partThree = this.partThreeMessages[Math.floor(Math.random() * this.partThreeMessages.length)]
+            this.partFour = this.partFourMessages[Math.floor(Math.random() * this.partFourMessages.length)]
+            this.partFive = this.partFiveMessages[Math.floor(Math.random() * this.partFiveMessages.length)]
+            this.partSix = this.partSixMessages[Math.floor(Math.random() * this.partSixMessages.length)]
+            this.partSeven = this.partSevenMessages[Math.floor(Math.random() * this.partSevenMessages.length)]
+            this.partEight = this.partEightMessages[Math.floor(Math.random() * this.partEightMessages.length)]
+            this.partNine = this.partNineMessages[Math.floor(Math.random() * this.partNineMessages.length)]
+            this.partTen = this.partTenMessages[Math.floor(Math.random() * this.partTenMessages.length)]
             this.triggerText()
         },
         triggerText() {

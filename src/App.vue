@@ -8,27 +8,32 @@ import { RouterView } from 'vue-router'
 </script>
   
 <template>
-  <div class="container d-flex justify-content-center">
-  <h1>JavaVikings</h1>
-  </div>
-  <div class="container d-flex justify-content-center">
-    <div class="menu row justify-content-center row-cols-auto">
-      <div class="col">
-        <RouterLink to="/" v-slot="{ navigate }"><button class="btn btn-danger" @click="navigate">Home</button></RouterLink>
+  <div class="container">
+    <div class="menu row text-center">
+
+      <div class="col-12">
+        <h1>JavaVikings</h1>
       </div>
-      <div class="col">
-        <RouterLink to="/gear" v-slot="{ navigate }"><button class="btn btn-danger" @click="navigate">Generate Gear</button></RouterLink>
+
+      <div class="col-4">
+        <RouterLink to="/" v-slot="{ navigate }"><button class="btn btn-danger" @click="navigate">Home</button>
+        </RouterLink>
+      </div>
+
+      <div class="col-4">
+        <RouterLink to="/gear" v-slot="{ navigate }"><button class="btn btn-danger" @click="navigate">Generate
+            Gear</button></RouterLink>
 
       </div>
-      <div class="col">
+
+      <div class="col-4">
         <RouterLink to="/fight" v-slot="{ navigate }"><button class="btn btn-danger" @click="navigate">Fight</button>
         </RouterLink>
+      </div>
+    </div>
 
-    </div>
-        <RouterView />
-    </div>
+    <RouterView />
     
-
   </div>
 </template>
 

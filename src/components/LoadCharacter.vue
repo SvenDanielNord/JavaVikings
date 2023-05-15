@@ -36,61 +36,62 @@ export default {
 </script>
 
 <template>
-    <div>
-        <h1>Pick a worthy opponent!</h1>
+    <div class="container row text-center">
+
         <div>
 
-            <div class="flex">
-                <ul>
-                    <fieldset class="bg">
-                        <div>Chosen figther: {{ figtherOne.name }}</div>
-                    </fieldset>
+            <ul>
+                <fieldset>
+                    <div>Chosen figther: {{ figtherOne.name }}</div>
+                </fieldset>
 
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Fighter 1
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-item" @click="setFigtherOne(char)" v-for="char in characters"
-                                :key="char.name">
-                                {{ char.name }}
-                            </li>
-                        </ul>
-                    </div>
-                </ul>
-                <div>
-                    <PictureBoxLoad :gearObject="figtherOne" />
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Fighter 1
+                </button>
+                <!-- Denna skall ha en egen container? -->
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item" @click="setFigtherOne(char)" v-for="char in characters" :key="char.name">
+                            {{ char.name }}
+                        </li>
+                    </ul>
                 </div>
-            </div>
+            </ul>
 
-
-
-            <div class="flex">
-                <ul>
-                    <fieldset class="bg">
-                        <div>Chosen figther: {{ figtherTwo.name }}</div>
-                    </fieldset>
-
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Fighter 2
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-item" @click="setFigtherTwo(char)" v-for="char in characters"
-                                :key="char.name">
-                                {{ char.name }}
-                            </li>
-                        </ul>
-                    </div>
-                </ul>
-                <div>
-                    <PictureBoxLoad :gearObject="figtherTwo" />
-                </div>
+            <div>
+                <PictureBoxLoad :gearObject="figtherOne" />
             </div>
         </div>
-        <TimeToFight :characterOne="figtherOne" :characterTwo="figtherTwo" />
+
+        <div>
+            <ul>
+                <fieldset>
+                    <div>Chosen figther: {{ figtherTwo.name }}</div>
+                </fieldset>
+
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Fighter 2
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item" @click="setFigtherTwo(char)" v-for="char in characters" :key="char.name">
+                            {{ char.name }}
+                        </li>
+                    </ul>
+                </div>
+            </ul>
+            <div>
+                <PictureBoxLoad :gearObject="figtherTwo" />
+            </div>
+        </div>
+
+
+        <div>
+            <TimeToFight :characterOne="figtherOne" :characterTwo="figtherTwo" />
+        </div>
+
     </div>
 </template>
 
@@ -103,12 +104,5 @@ div {
 li {
     list-style: none;
     cursor: pointer;
-}
-
-.flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5rem;
 }
 </style>

@@ -23,7 +23,7 @@ export default {
 
 <style>
 p {
-    color: orangered;
+    color: rgb(14, 13, 13);
     font-size: x-large;
     
 

@@ -36,88 +36,59 @@ export default {
 </script>
 
 <template>
-    <div class="container row text-center">
+    <div class="container text-center">
 
-        <div>
-
-            <div>
-                <fieldset>
-                    <div>Chosen figther: {{ figtherOne.name }}</div>
-                </fieldset>
-
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Fighter 1
-                    </button>
-                    <!-- Denna skall ha en egen container? -->
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-item" @click="setFigtherOne(char)" v-for="char in characters" :key="char.name">
-                            {{ char.name }}
-                        </li>
-                    </ul>
-                </div>
+        <div class="row mt-3">
+            <div class="dropdown col-12">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Fighter 1
+                </button>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item" @click="setFigtherOne(char)" v-for="char in characters" :key="char.name">
+                        {{ char.name }}
+                    </li>
+                </ul>
             </div>
+        </div>
 
-            <div>
+        <div class="row mt-3">
+            <div class="col"></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-2">
                 <PictureBoxLoad :gearObject="figtherOne" />
             </div>
+            <div class="col"></div>
         </div>
 
-        <div>
-            <div>
-                <fieldset>
-                    <div>Chosen figther: {{ figtherTwo.name }}</div>
-                </fieldset>
 
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Fighter 2
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-item" @click="setFigtherTwo(char)" v-for="char in characters" :key="char.name">
-                            {{ char.name }}
-                        </li>
-                    </ul>
-                </div>
+
+        <div class="row mt-3">
+            <div class="dropdown col-12">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Fighter 2
+                </button>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item" @click="setFigtherTwo(char)" v-for="char in characters" :key="char.name">
+                        {{ char.name }}
+                    </li>
+                </ul>
             </div>
-            <div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col"></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-2">
                 <PictureBoxLoad :gearObject="figtherTwo" />
             </div>
+            <div class="col"></div>
         </div>
 
-
-        <div>
-            <TimeToFight :characterOne="figtherOne" :characterTwo="figtherTwo" />
+        <div class="row mt-3">
+            <div class="col-12">
+                <TimeToFight :characterOne="figtherOne" :characterTwo="figtherTwo" />
+            </div>
         </div>
-
-        <!-- <div class="container">
-            <div class="row">
-                <div class="col">
-                    asd
-                </div>
-                <div class="col">
-                    asd
-                </div>
-                <div class="col">
-                    asd
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-6">
-                    asd
-                </div>
-                <div class="col">
-                    asd
-                </div>
-                <div class="col">
-                    asd
-                </div>
-            </div>
-
-        </div> -->
 
     </div>
 </template>
@@ -131,4 +102,9 @@ div {
 li {
     list-style: none;
     cursor: pointer;
-}</style>
+}
+
+.mt-3 {
+    margin-top: 3 !important;
+}
+</style>

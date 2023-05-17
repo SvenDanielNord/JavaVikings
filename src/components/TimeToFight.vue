@@ -97,8 +97,8 @@ export default {
     },
     methods: {
         startFight() {
+            this.makePlayer()
             this.getFightLocation().then(() => {
-                this.makePlayer()
                 this.setText()
             })
         },
@@ -152,6 +152,7 @@ export default {
                 }
                 this.printText += ' '
             }
+            this.textDonePrinting = true
         },
         sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms))

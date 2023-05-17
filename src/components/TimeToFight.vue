@@ -7,6 +7,8 @@ export default {
             location: null,
             winner: null,
             loser: null,
+            printText: '',
+            textDonePrinting: false,
             fighterOne: {
                 name: null,
                 stats: null
@@ -87,10 +89,6 @@ export default {
                     "claims victory, bringing an end to the battle with"
                 ],
             },
-            triggerTextBox: false,
-            triggerTextTwo: false,
-            triggerTextThree: false,
-            triggerDone: false,
         }
     },
     props: {
@@ -99,12 +97,12 @@ export default {
     },
     methods: {
         startFight() {
-            this.testLocation().then(() => {
+            this.getFightLocation().then(() => {
                 this.makePlayer()
                 this.setText()
             })
         },
-        async testLocation() {
+        async getFightLocation() {
             this.location = await getLocation()
         },
         makePlayer() {
@@ -124,58 +122,50 @@ export default {
             this.winner = this.fighterOne.stats > this.fighterTwo.stats ? this.fighterOne.name : this.fighterTwo.name;
             this.loser = this.fighterOne.stats > this.fighterTwo.stats ? this.fighterTwo.name : this.fighterOne.name;
         },
-        setText() {
-            this.textOne = this.messages.textOne[Math.floor(Math.random() * this.messages.textOne.length)]
-            this.textTwo = this.messages.textTwo[Math.floor(Math.random() * this.messages.textTwo.length)]
-            this.textThree = this.messages.textThree[Math.floor(Math.random() * this.messages.textThree.length)]
-            this.textFour = this.messages.textFour[Math.floor(Math.random() * this.messages.textFour.length)]
-            this.textFive = this.messages.textFive[Math.floor(Math.random() * this.messages.textFive.length)]
-            this.textSix = this.messages.textSix[Math.floor(Math.random() * this.messages.textSix.length)]
-            this.textSeven = this.messages.textSeven[Math.floor(Math.random() * this.messages.textSeven.length)]
-            this.textEight = this.messages.textEight[Math.floor(Math.random() * this.messages.textEight.length)]
-            this.textNine = this.messages.textNine[Math.floor(Math.random() * this.messages.textNine.length)]
-            this.textTen = this.messages.textTen[Math.floor(Math.random() * this.messages.textTen.length)]
-            this.triggerText()
+        async setText() {
+            const messageOrder = [
+                this.messages.textOne[Math.floor(Math.random() * this.messages.textOne.length)],
+                this.location,
+                this.fighterOne.name,
+                this.messages.textTwo[Math.floor(Math.random() * this.messages.textTwo.length)],
+                this.fighterTwo.name,
+                this.messages.textThree[Math.floor(Math.random() * this.messages.textThree.length)],
+                this.messages.textFour[Math.floor(Math.random() * this.messages.textFour.length)],
+                this.messages.textFive[Math.floor(Math.random() * this.messages.textFive.length)],
+                this.fighterOne.name,
+                this.messages.textSix[Math.floor(Math.random() * this.messages.textSix.length)],
+                this.fighterTwo.name,
+                this.messages.textSeven[Math.floor(Math.random() * this.messages.textSeven.length)],
+                this.fighterTwo.name,
+                this.messages.textEight[Math.floor(Math.random() * this.messages.textEight.length)],
+                this.messages.textNine[Math.floor(Math.random() * this.messages.textNine.length)],
+                this.winner,
+                this.messages.textTen[Math.floor(Math.random() * this.messages.textTen.length)],
+                this.loser,
+            ]
+            for (const messages of messageOrder) {
+                for (const message of messages) {
+                    for (const text of message) {
+                        this.printText += text
+                    }
+                    await this.sleep(40)
+                }
+                this.printText += ' '
+            }
         },
-        triggerText() {
-            this.triggerTextBox = true
-            setTimeout(() => {
-                this.triggerTextTwo = true
-                this.triggerPartThree()
-            }, 5000)
-        },
-        triggerPartThree() {
-            setTimeout(() => {
-                this.triggerTextThree = true
-                this.triggerDone = true
-            }, 5000)
+        sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms))
         }
     }
 }
 </script>
 
 <template>
-    <!-- <div>
-        <button @click="startFight()">Fight!</button>
-        <div v-if="triggerTextBox" class="letMeSeeSomething">
-            <div class="fade-in-text">
-                {{ textOne }} {{ location }}, {{ fighterOne.name }} {{ textTwo }} {{ fighterTwo.name }} {{ textThree }} {{
-                    textFour }}
-            </div>
-            <div v-if="triggerTextTwo" class="fade-in-text">
-                {{ textFive }} {{ fighterOne.name }} {{ textSix }} {{ fighterTwo.name }} {{ textSeven }} {{ fighterTwo.name
-                }} {{ textEight }}
-            </div>
-            <div v-if="triggerTextThree" class="fade-in-text">
-                {{ textNine }} {{ winner }} {{ textTen }} {{ loser }}
-            </div>
-        </div>
-    </div> -->
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop" @click="startFight()">
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+        @click="startFight()">
         Fight!
     </button>
-
     <!-- Modal -->
     <div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -184,25 +174,12 @@ export default {
                 <div class="modal-header">
                     <h1 class="modal-title w-100" id="staticBackdropLabel">Fight</h1>
                 </div>
-                <div class="modal-body">
-                        <div v-if="triggerTextBox">
-                            <div class="fade-in-text">
-                                {{ textOne }} {{ location }}, {{ fighterOne.name }} {{ textTwo }} {{ fighterTwo.name }} {{
-                                    textThree }} {{ textFour }}
-                            </div>
-                            <div v-if="triggerTextTwo" class="fade-in-text">
-                                {{ textFive }} {{ fighterOne.name }} {{ textSix }} {{ fighterTwo.name }} {{ textSeven }} {{
-                                    fighterTwo.name
-                                }} {{ textEight }}
-                            </div>
-                            <div v-if="triggerTextThree" class="fade-in-text">
-                                {{ textNine }} {{ winner }} {{ textTen }} {{ loser }}
-                            </div>
-                      
-                    </div>
+                <div>
+                    {{ printText }}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" v-if="triggerDone">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        v-if="textDonePrinting">Close</button>
                 </div>
             </div>
         </div>
@@ -213,20 +190,4 @@ export default {
 @import '~bootstrap/scss/mixins';
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
-
-.fade-in-text {
-    opacity: 0;
-    animation: fade 0.7s forwards;
-}
-
-@keyframes fade {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
 </style>

@@ -7,7 +7,7 @@ import { RouterView } from 'vue-router'
 
 </script>
   
-<template>
+<template> 
   <div class="container">
     <div class="menu row">
 

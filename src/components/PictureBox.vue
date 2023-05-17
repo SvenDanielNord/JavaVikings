@@ -63,6 +63,6 @@ export default {
 </script>
 <template>
     <div class="spinner-border m-5" v-if="loading"></div>
-    <div class="col" v-else><a @click="fetchUrl(search)" :title="title"><img class="img-fluid" style="width: 125px; height: 125px;"  :src="this.url" alt=""></a></div>
+    <div class="col" v-else><a @click="fetchUrl(search)" :title="title"><img id="gear" class="img-fluid" style="width: 125px; height: 125px;"  :src="this.url" alt=""></a></div>
 </template>
 

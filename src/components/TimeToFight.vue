@@ -90,6 +90,7 @@ export default {
             triggerTextBox: false,
             triggerTextTwo: false,
             triggerTextThree: false,
+            triggerDone: false,
         }
     },
     props: {
@@ -146,6 +147,7 @@ export default {
         triggerPartThree() {
             setTimeout(() => {
                 this.triggerTextThree = true
+                this.triggerDone = true
             }, 5000)
         }
     }
@@ -153,7 +155,7 @@ export default {
 </script>
 
 <template>
-    <div>
+    <!-- <div>
         <button @click="startFight()">Fight!</button>
         <div v-if="triggerTextBox" class="letMeSeeSomething">
             <div class="fade-in-text">
@@ -168,17 +170,51 @@ export default {
                 {{ textNine }} {{ winner }} {{ textTen }} {{ loser }}
             </div>
         </div>
+    </div> -->
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop" @click="startFight()">
+        Fight!
+    </button>
+
+    <!-- Modal -->
+    <div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title w-100" id="staticBackdropLabel">Fight</h1>
+                </div>
+                <div class="modal-body">
+                        <div v-if="triggerTextBox">
+                            <div class="fade-in-text">
+                                {{ textOne }} {{ location }}, {{ fighterOne.name }} {{ textTwo }} {{ fighterTwo.name }} {{
+                                    textThree }} {{ textFour }}
+                            </div>
+                            <div v-if="triggerTextTwo" class="fade-in-text">
+                                {{ textFive }} {{ fighterOne.name }} {{ textSix }} {{ fighterTwo.name }} {{ textSeven }} {{
+                                    fighterTwo.name
+                                }} {{ textEight }}
+                            </div>
+                            <div v-if="triggerTextThree" class="fade-in-text">
+                                {{ textNine }} {{ winner }} {{ textTen }} {{ loser }}
+                            </div>
+                      
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" v-if="triggerDone">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
-<style>
-.letMeSeeSomething {
-    background-color: white;
-    font-family: 'Times New Roman', Times, serif;
-}
+<style lang="scss" scoped>
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
 
 .fade-in-text {
-    display: inline-block;
     opacity: 0;
     animation: fade 0.7s forwards;
 }
@@ -192,4 +228,5 @@ export default {
         opacity: 1;
     }
 }
+
 </style>

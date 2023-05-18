@@ -9,16 +9,16 @@ describe('path test', () => {
     
     })
 
-    it('Checks if player is saved', () => {
+    it('Checks if player is saved and that the saved character has picture url:s', () => {
       
        
       cy.visit('/gear')
 
       cy.get('#gear[src^="http"]').should('have.length', 6)
 
-      cy.get('input').type('Jocke')
+      cy.get('#name').type('Jocke')
       
-      cy.get('.mb-3 >  button').click()
+      cy.get('#save > button').click()
       
       cy.get('.menu> div:nth-child(4) > a > button').click()
       
@@ -26,9 +26,9 @@ describe('path test', () => {
 
       cy.get('li').contains('Jocke').click()
 
-      cy.get('img').each((item, list) => {
-        console.log(list)
-        cy.wrap(item).should('have.attr', 'src').should('not.eq', '')
+      cy.get('.smallPictures').each((item) => {
+        
+        cy.wrap(item).should('have.attr', 'src').should('not.eq', '').and('includes','http')
 
       })
 

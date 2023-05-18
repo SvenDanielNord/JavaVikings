@@ -187,8 +187,3 @@ export default {
     </div>
 </template>
 
-<style lang="scss" scoped>
-@import '~bootstrap/scss/mixins';
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
-</style>

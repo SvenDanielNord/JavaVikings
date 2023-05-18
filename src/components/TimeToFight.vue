@@ -1,5 +1,6 @@
 <script>
 import { getLocation } from '../data/FetchLocation.js'
+import { pickRandomMessage } from '../data/FightMessage'
 
 export default {
     data() {
@@ -18,77 +19,17 @@ export default {
                 stats: null
             },
             messages: {
-                textOne: [
-                    "In the midst of a serene afternoon in",
-                    "Under the clear blue sky of",
-                    "Amidst the serene beauty of",
-                    "In a peaceful corner of",
-                    "Surrounded by tranquility in"
-                ],
-                textTwo: [
-                    "relishes the tranquility until an unexpected encounter with",
-                    "basks in the peaceful ambiance until the unexpected arrival of",
-                    "enjoys a moment of serenity until",
-                    "finds solace in the calmness until",
-                    "is at peace until"
-                ],
-                textThree: [
-                    "shatters the silence.",
-                    "sparks tension in the air.",
-                    "breaks the calmness.",
-                    "disturbs the peaceful atmosphere.",
-                    "disrupts the tranquility."
-                ],
-                textFour: [
-                    "Fixing their gaze upon one another, both fighters lock eyes, their hands instinctively reaching for their swords.",
-                    "Their eyes meet in a moment of silent understanding as they simultaneously unsheathe their blades, preparing for the impending clash.",
-                    "With an intense stare, the fighters engage in a wordless exchange, drawing their swords in perfect synchronization.",
-                    "Their eyes lock in a fierce gaze as they prepare for an intense battle, their weapons ready.",
-                    "As tension builds, the fighters share a determined look, knowing what lies ahead."
-                ],
-                textFive: [
-                    "Swift and precise,",
-                    "With a sudden burst of energy,",
-                    "Quick and agile,",
-                    "In a graceful motion,",
-                    "Like a whirlwind,"
-                ],
-                textSix: [
-                    "executes a calculated strike, momentarily disrupting",
-                    "delivers a staggering blow that momentarily staggers",
-                    "lands a well-aimed attack, momentarily disorienting",
-                    "launches a powerful assault, momentarily overwhelming",
-                    "strikes with precision, momentarily throwing off"
-                ],
-                textSeven: [
-                    "'s balance. Yet,",
-                    ". But",
-                    "'s equilibrium. However,",
-                    ". Nonetheless,",
-                    "'s stability. Still,"
-                ],
-                textEight: [
-                    "swiftly regains composure and retaliates with a swift counterattack.",
-                    "swiftly recovers, launching a relentless counter-assault.",
-                    "proves their resilience, quickly retaliating with a formidable strike.",
-                    "counterattacks with lightning speed, catching the opponent off guard.",
-                    "recovers swiftly and counterstrikes with exceptional agility."
-                ],
-                textNine: [
-                    "Following a grueling and monotonous battle,",
-                    "In an arduous and tedious struggle,",
-                    "After enduring a prolonged and mind-numbing duel,",
-                    "Having fought relentlessly in an exhausting encounter,",
-                    "In a battle that seemed never-ending,"
-                ],
-                textTen: [
-                    "emerges triumphant, ending the fight by severing the head of",
-                    "ultimately prevails, putting an end to the fight by beheading",
-                    "triumphs over the opponent, leaving them defeated",
-                    "prevails in the fight, proving their superiority against",
-                    "claims victory, bringing an end to the battle with"
-                ],
-            },
+                textOne: null,
+                textTwo: null,
+                textThree: null,
+                textFour: null,
+                textFive: null,
+                textSix: null,
+                textSeven: null,
+                textEight: null,
+                textNine: null,
+                textTen: null,
+            }
         }
     },
     props: {
@@ -97,8 +38,8 @@ export default {
     },
     methods: {
         startFight() {
+            this.makePlayer()
             this.getFightLocation().then(() => {
-                this.makePlayer()
                 this.setText()
             })
         },
@@ -123,35 +64,40 @@ export default {
             this.loser = this.fighterOne.stats > this.fighterTwo.stats ? this.fighterTwo.name : this.fighterOne.name;
         },
         async setText() {
+            for (const message in this.messages) {
+                this.messages[message] = pickRandomMessage(message)
+            }
+
             const messageOrder = [
-                this.messages.textOne[Math.floor(Math.random() * this.messages.textOne.length)],
+                this.messages.textOne,
                 this.location,
                 this.fighterOne.name,
-                this.messages.textTwo[Math.floor(Math.random() * this.messages.textTwo.length)],
+                this.messages.textTwo,
                 this.fighterTwo.name,
-                this.messages.textThree[Math.floor(Math.random() * this.messages.textThree.length)],
-                this.messages.textFour[Math.floor(Math.random() * this.messages.textFour.length)],
-                this.messages.textFive[Math.floor(Math.random() * this.messages.textFive.length)],
+                this.messages.textThree,
+                this.messages.textFour,
+                this.messages.textFive,
                 this.fighterOne.name,
-                this.messages.textSix[Math.floor(Math.random() * this.messages.textSix.length)],
+                this.messages.textSix,
                 this.fighterTwo.name,
-                this.messages.textSeven[Math.floor(Math.random() * this.messages.textSeven.length)],
+                this.messages.textSeven,
                 this.fighterTwo.name,
-                this.messages.textEight[Math.floor(Math.random() * this.messages.textEight.length)],
-                this.messages.textNine[Math.floor(Math.random() * this.messages.textNine.length)],
+                this.messages.textEight,
+                this.messages.textNine,
                 this.winner,
-                this.messages.textTen[Math.floor(Math.random() * this.messages.textTen.length)],
+                this.messages.textTen,
                 this.loser,
             ]
-            for (const messages of messageOrder) {
-                for (const message of messages) {
-                    for (const text of message) {
-                        this.printText += text
+            for (const text of messageOrder) {
+                for (const word of text) {
+                    for (const letter of word) {
+                        this.printText += letter
                     }
                     await this.sleep(40)
                 }
                 this.printText += ' '
             }
+            this.textDonePrinting = true
         },
         sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms))

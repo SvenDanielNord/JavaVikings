@@ -33,7 +33,7 @@ export default {
 
 <template>
     <div>
-        <div class="card" v-if="listOfUrls.length > 0">
+        <div class="fighterBackground" v-if="listOfUrls.length > 0">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -64,17 +64,29 @@ export default {
                 </div>
             </div>
 
-            <p class="card-text">{{ gearObject.name }}</p>
+            <p>{{ gearObject.name }}</p>
 
         </div>
     </div>
 </template>
 
-<style>
+<style scoped>
 .smallPictures {
     width: 40px;
     height: 40px;
     border: 1px solid black;
+}
+
+.fighterBackground{
+    background-color: rgb(0, 0, 0, .5);
+    border-radius: 1rem;
+}
+
+p{
+    color: aliceblue;
+    background-color: rgb(78, 76, 76);
+    border-radius: 1rem;
+    margin-top: 1rem;
 }
 
 </style>

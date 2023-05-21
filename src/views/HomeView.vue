@@ -13,8 +13,7 @@ export default {
 
 <template>
     <div class="container">
-        <div class="menu row text-center">
-            <div class="col"></div>
+        <div class="menu row justify-content-center">
 
 
             <div class="col-3 text-center">
@@ -26,7 +25,6 @@ export default {
                 <RouterLink to="/fight"><button class="btn btn-danger">Fight</button>
                 </RouterLink>
             </div>
-            <div class="col"></div>
 
         </div>
     </div>

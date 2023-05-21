@@ -16,21 +16,20 @@ export default {
 </script>
 
 <template>
-    <div class="container">
-        <div class="menu row text-center">
-            <div class="col"></div>
+    <div class="container text-center">
 
-            <div class="col-3 text-center">
+        <div class="menu row justify-content-center">
+
+            <div class="col-3">
                 <RouterLink to="/"><button class="btn btn-danger">Home</button>
                 </RouterLink>
             </div>
 
-            <div class="col-3 text-center">
+            <div class="col-3">
                 <RouterLink to="/gear"><button class="btn btn-danger">Generate Gear</button>
                 </RouterLink>
             </div>
 
-            <div class="col"></div>
         </div>
     </div>
 

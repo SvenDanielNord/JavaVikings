@@ -50,8 +50,7 @@ export default {
 
 <template>
     <div class="container">
-        <div class="menu row text-center">
-            <div class="col"></div>
+        <div class="menu row justify-content-center">
             <div class="col-3 text-center">
                 <RouterLink to="/"><button class="btn btn-danger">Home</button>
                 </RouterLink>
@@ -61,10 +60,9 @@ export default {
                 <RouterLink to="/fight"><button class="btn btn-danger">Fight</button>
                 </RouterLink>
             </div>
-            <div class="col"></div>
         </div>
 
-        <div class="row mt-3 ">
+        <div class="row mt-3">
             <div class="col-12">
                 <div id="save" class="mb-3 input-group justify-content-center">
                     <!-- Borde detta vara en form? -->

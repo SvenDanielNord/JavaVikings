@@ -5,7 +5,7 @@ import PictureBox from '../components/PictureBox.vue';
 
 export default {
     components: {
-        
+
         PictureBox
     },
     data() {
@@ -42,8 +42,6 @@ export default {
             const getCharacterStats = localStorage.getItem(getCharacterName)
             console.log('Name: ' + getCharacterName + ' Stats: ' + getCharacterStats)
         },
-
-        //TODO: Skapa klass för items???
     },
 
 
@@ -51,19 +49,36 @@ export default {
 </script>
 
 <template>
-   
-   
-    <div class="col">
-        <div id="save" class=" mb-3 input-group">
-            <!-- Borde detta vara en form? -->
-            <button button class="btn btn-danger "  @click="saveCharacter">Save</button>
-            <input type="text" class="form-group" id="name" v-model="characterName" required minlength="4" maxlength="16" size="11" placeholder="Character name" aria-label="Save" aria-describedby="basic-addon1">
+    <div class="container">
+        <div class="menu row text-center">
+            <div class="col"></div>
+            <div class="col-3 text-center">
+                <RouterLink to="/"><button class="btn btn-danger">Home</button>
+                </RouterLink>
+            </div>
+
+            <div class="col-3 text-center">
+                <RouterLink to="/fight"><button class="btn btn-danger">Fight</button>
+                </RouterLink>
+            </div>
+            <div class="col"></div>
         </div>
 
+        <div class="row mt-3 ">
+            <div class="col-12">
+                <div id="save" class="mb-3 input-group justify-content-center">
+                    <!-- Borde detta vara en form? -->
+                    <button button class="btn btn-danger " @click="saveCharacter">Save</button>
+                    <input type="text" class="form-group" id="name" v-model="characterName" required minlength="4"
+                        maxlength="16" size="11" placeholder="Character name" aria-label="Save"
+                        aria-describedby="basic-addon1">
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="col">
 
+    <div class="col">
         <button button class="btn btn-danger" @click="clearCharacter">Clear storage</button>
     </div>
 
@@ -82,82 +97,7 @@ export default {
 </template>
 
 <style>
-/* .flexCenter {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.mt-3 {
+    margin-top: 3 !important;
 }
-
-.flexGap {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 3rem;
-}
-
-img {
-    height: 125px;
-    width: 125px;
-    border: 5px black solid;
-}
-
-.theGrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-
-.itemHelmet {
-    grid-column: 2 / span 2;
-    grid-row: 1;
-    justify-self: center;
-    align-self: center;
-}
-
-.itemArmor {
-    grid-column: 2 / span 2;
-    grid-row: 2;
-    justify-self: center;
-    align-self: center;
-}
-
-.itemSword {
-    grid-column: 2;
-    grid-row: 3;
-    justify-self: center;
-    align-self: center;
-}
-
-.itemShield {
-    grid-column: 3;
-    grid-row: 3;
-    justify-self: center;
-    align-self: center;
-}
-
-.itemLeggs {
-    grid-column: 2 / span 2;
-    grid-row: 4;
-    justify-self: center;
-    align-self: center;
-}
-
-.itemFeet {
-    grid-column: 2 / span 2;
-    grid-row: 5;
-    justify-self: center;
-    align-self: center;
-}
-
-@media (max-width: 480px) {
-    img {
-        height: 105px;
-        width: 105px;
-    }
-}
-
-@media (min-width: 768px) {
-    img {
-        height: 200px;
-        width: 200px;
-    }
-} */
 </style>

@@ -7,7 +7,7 @@ import { RouterView } from 'vue-router'
 
 </script>
   
-<template> 
+<template>
   <div class="container">
     <div class="menu row">
 
@@ -15,25 +15,10 @@ import { RouterView } from 'vue-router'
         <h1>JavaVikings</h1>
       </div>
 
-      <div class="col-4 text-end">
-        <RouterLink to="/" v-slot="{ navigate }"><button class="btn btn-danger" @click="navigate">Home</button>
-        </RouterLink>
-      </div>
-
-      <div class="col-4 text-center">
-        <RouterLink to="/gear" v-slot="{ navigate }"><button class="btn btn-danger" @click="navigate">Generate
-            Gear</button></RouterLink>
-
-      </div>
-
-      <div class="col-4 text-start">
-        <RouterLink to="/fight" v-slot="{ navigate }"><button class="btn btn-danger" @click="navigate">Fight</button>
-        </RouterLink>
-      </div>
     </div>
 
     <RouterView />
-    
+
   </div>
 </template>
 
@@ -41,6 +26,7 @@ import { RouterView } from 'vue-router'
 @import '~bootstrap/scss/mixins';
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
+
 
 
 

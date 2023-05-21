@@ -17,9 +17,7 @@ export default {
 
 <template>
     <div class="container text-center">
-
         <div class="menu row justify-content-center">
-
             <div class="col-3">
                 <RouterLink to="/"><button class="btn btn-danger">Home</button>
                 </RouterLink>
@@ -29,13 +27,10 @@ export default {
                 <RouterLink to="/gear"><button class="btn btn-danger">Generate Gear</button>
                 </RouterLink>
             </div>
-
         </div>
     </div>
 
-
     <div>
-
         <LoadCharacters />
     </div>
 </template>

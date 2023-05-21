@@ -40,7 +40,7 @@ export default {
 
         <div class="row mt-3">
             <div class="dropdown col-12">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     Fighter 1
                 </button>
@@ -60,11 +60,9 @@ export default {
             <div class="col"></div>
         </div>
 
-
-
         <div class="row mt-3">
             <div class="dropdown col-12">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     Fighter 2
                 </button>

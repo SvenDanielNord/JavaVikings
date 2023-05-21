@@ -1,8 +1,4 @@
 <script setup>
-
-// import { RouterLink, RouterView } from 'vue-router'
-
-
 import { RouterView } from 'vue-router'
 
 </script>
@@ -16,9 +12,7 @@ import { RouterView } from 'vue-router'
       </div>
 
     </div>
-
     <RouterView />
-
   </div>
 </template>
 
@@ -27,14 +21,6 @@ import { RouterView } from 'vue-router'
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 
-
-
-
-// .container {
-//   display: flex;
-//   flex-direction: row;
-//   align-items: center;
-// }
 </style>
 
 

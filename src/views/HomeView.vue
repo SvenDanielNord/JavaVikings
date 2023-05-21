@@ -1,20 +1,6 @@
-<!-- <script>
-import { RouterLink } from 'vue-router'
-
-
-
-
-export default {
-    components: {
-        
-    }   
-}
-</script> -->
-
 <template>
     <div class="container">
         <div class="menu row justify-content-center">
-
 
             <div class="col-3 text-center">
                 <RouterLink to="/gear"><button class="btn btn-danger">Generate

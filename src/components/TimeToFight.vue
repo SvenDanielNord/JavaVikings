@@ -10,6 +10,7 @@ export default {
             loser: null,
             printText: '',
             textDonePrinting: false,
+            isBothFightersReady: false,
             fighterOne: {
                 name: null,
                 stats: null
@@ -44,7 +45,11 @@ export default {
             })
         },
         async getFightLocation() {
-            this.location = await getLocation()
+            try {
+                this.location = await getLocation()
+            } catch (error) {
+                console.error(error)
+            }
         },
         makePlayer() {
             this.fighterOne.stats = 0
@@ -101,6 +106,24 @@ export default {
         },
         sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms))
+        },
+    },
+    computed: {
+        isBothFighters() {
+            return (
+                typeof this.characterOne.name !== 'undefined' &&
+                typeof this.characterTwo.name !== 'undefined'
+            )
+        }
+    },
+    watch: {
+        isBothFighters() {
+            if (typeof this.characterOne.name !== 'undefined' || typeof this.characterTwo.name !== 'undefined') {
+                return this.isBothFightersReady = true
+            }
+            else {
+                return this.isBothFightersReady = false
+            }
         }
     }
 }
@@ -108,8 +131,8 @@ export default {
 
 <template>
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-        @click="startFight()">
+    <button v-if="isBothFightersReady" type="button" class="btn btn-danger" data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop" @click="startFight()">
         Fight!
     </button>
     <!-- Modal -->

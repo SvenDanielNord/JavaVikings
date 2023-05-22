@@ -64,7 +64,7 @@ export default {
 
 <template>
     <div class="spinner-border m-5" v-if="loading"></div>
-    <div  class="col img-fluid" v-else><a @click="fetchUrl(search)" :title="title"><img id="gear" class="pictureSize" :src="this.url" alt=""></a></div>
+    <div  class="col img-fluid" v-else><a @click="fetchUrl(search)" :title="title"><img id="gear" class="pictureSize border-on-hover" :src="this.url" alt=""></a></div>
 </template>
 
 
@@ -74,6 +74,12 @@ export default {
     width: 125px; 
     height: 125px;
 }
+
+.border-on-hover:hover {
+    border: 5px solid transparent;
+    transition: 0.1s;
+
+  }
 
 </style>
 

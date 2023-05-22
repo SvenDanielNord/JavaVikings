@@ -98,14 +98,14 @@ export default {
 
     <div class="container col-12 text-center">
         <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemHelmet" search="hjälm" />
-        <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemArmor" search="tröja" />
         <div class="row justify-content-center row-cols-auto">
-            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemSword" search="svärd" />
-            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemShield" search="sköld" />
+            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemSword mt-4" search="svärd" />
+            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemArmor mt-4" search="tröja" />
+            <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemShield mt-4" search="sköld" />
         </div>
 
-        <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemLeggs" search="byxa" />
-        <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemFeet" search="skor" />
+        <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemLeggs mt-4" search="byxa" />
+        <PictureBox @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemFeet mt-4" search="skor" />
     </div>
 </template>
 

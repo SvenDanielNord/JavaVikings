@@ -73,6 +73,20 @@ export default {
     height: 125px;
 }
 
+@media (max-width: 768px) {
+  .pictureSize {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 576px) {
+  .pictureSize {
+    width: 75px;
+    height: 75px;
+  }
+}
+
 .border-on-hover:hover {
     border: 5px solid transparent;
     transition: 0.1s;

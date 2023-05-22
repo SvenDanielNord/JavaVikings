@@ -111,21 +111,27 @@ export default {
             this.printText = ''
             this.textDonePrinting = false
         },
-    },
-    computed: {
-        isBothFighters() {
-            return (
-                typeof this.characterOne.name && typeof this.characterTwo.name
-            )
+        checkFightersReady() {
+            if (typeof this.characterOne.name !== 'undefined' && typeof this.characterTwo.name !== 'undefined') {
+                this.isBothFightersReady = true;
+            }
         }
     },
     watch: {
-        isBothFighters() {
-            if (typeof this.characterOne.name !== 'undefined' && typeof this.characterTwo.name !== 'undefined') {
-                this.isBothFightersReady = true
-            }
-        }
+        characterOne: {
+            handler() {
+                this.checkFightersReady()
+            },
+        },
+        characterTwo: {
+            handler() {
+                this.checkFightersReady()
+            },
+        },
     }
+
+
+
 }
 </script>
 

@@ -84,7 +84,7 @@ export default {
 
 p{
     color: aliceblue;
-    background-color: rgb(78, 76, 76);
+    background-color: rgb(110, 63, 63);
     border-radius: 1rem;
     margin-top: 1rem;
 }

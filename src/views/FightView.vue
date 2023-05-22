@@ -9,7 +9,6 @@ export default {
         }
     },
     components: {
-
         LoadCharacters
     }
 }
@@ -18,13 +17,13 @@ export default {
 <template>
     <div class="container text-center">
         <div class="menu row justify-content-center">
-            <div class="col-3">
-                <RouterLink to="/"><button class="btn btn-danger">Home</button>
+            <div class="col-sm-4 col">
+                <RouterLink to="/"><button class="btn btn-danger buttonSize">Home</button>
                 </RouterLink>
             </div>
 
-            <div class="col-3">
-                <RouterLink to="/gear"><button class="btn btn-danger">Generate Gear</button>
+            <div class="col-sm-4 col">
+                <RouterLink to="/gear"><button class="btn btn-danger buttonSize">Generate Gear</button>
                 </RouterLink>
             </div>
         </div>

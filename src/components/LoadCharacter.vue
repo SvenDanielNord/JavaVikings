@@ -37,7 +37,6 @@ export default {
                 const characterGear = localStorage.getItem(characterName)
                 this.characters.push({ name: fighter.name, gear: JSON.parse(characterGear) })
             }
-            this.fighter = char
         }
     },
     mounted() {

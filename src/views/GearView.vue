@@ -20,6 +20,7 @@ export default {
 
             characterName: '',
             totalStats: 0,
+            saveAlert: false,
         }
     },
     methods: {
@@ -33,6 +34,15 @@ export default {
         },
         saveCharacter() {
             localStorage.setItem(this.characterName, JSON.stringify(this.items))
+            this.showSaveAlert()
+        },
+        showSaveAlert() {
+            this.saveAlert = true
+            this.characterName = "";
+            setTimeout(() => {
+                this.saveAlert = false;
+            }, 3000);
+
         },
         clearCharacter() {
             localStorage.clear()
@@ -71,7 +81,12 @@ export default {
                         maxlength="16" size="11" placeholder="Character name" aria-label="Save"
                         aria-describedby="basic-addon1">
                 </div>
+
             </div>
+        </div>
+
+        <div class="row text-center justify-content-center">
+            <div v-if="saveAlert" class="col-5 saveAlertMessage"> Character saved!</div>
         </div>
     </div>
 
@@ -97,5 +112,11 @@ export default {
 <style>
 .mt-3 {
     margin-top: 3 !important;
+}
+
+.saveAlertMessage {
+    color: rgb(224, 44, 44);
+    background-color: whitesmoke;
+    border-radius: 0.5rem;
 }
 </style>

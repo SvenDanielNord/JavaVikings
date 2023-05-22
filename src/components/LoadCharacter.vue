@@ -97,7 +97,6 @@ export default {
                 <TimeToFight :characterOne="fighterOne" :characterTwo="fighterTwo" />
             </div>
         </div>
-
     </div>
 </template>
 

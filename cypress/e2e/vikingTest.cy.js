@@ -1,11 +1,11 @@
 // https://docs.cypress.io/api/introduction/api.html
 
 describe('path test', () => {
-  it('visits gear via generate gear button', () => {
+  it('visits fight via generate  fight-button', () => {
     cy.visit('/')
     
-    cy.get('.menu > div:nth-child(3) > a > button').click()
-    cy.location('pathname').should('eq', '/gear')
+    cy.get('.menu > div:nth-child(2) > a > button').click()
+    cy.location('pathname').should('eq', '/fight')
     
     })
 
@@ -20,7 +20,7 @@ describe('path test', () => {
       
       cy.get('#save > button').click()
       
-      cy.get('.menu> div:nth-child(4) > a > button').click()
+      cy.get('.menu> div:nth-child(2) > a > button').click()
       
       cy.get('button').contains('Fighter 1').click()
 

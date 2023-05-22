@@ -65,7 +65,7 @@ let messages = {
     textTen: [
         "emerges triumphant, ending the fight by severing the head of",
         "ultimately prevails, putting an end to the fight by beheading",
-        "triumphs over the opponent, leaving them defeated",
+        "triumphs over the opponent, leaving only ashes of",
         "prevails in the fight, proving their superiority against",
         "claims victory, bringing an end to the battle with"
     ],

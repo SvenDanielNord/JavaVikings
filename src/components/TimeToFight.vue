@@ -9,6 +9,7 @@ export default {
             winner: null,
             loser: null,
             printText: '',
+            fullMessage: '',
             textDonePrinting: false,
             isBothFightersReady: false,
             fighterOne: {
@@ -68,11 +69,10 @@ export default {
             this.winner = this.fighterOne.stats > this.fighterTwo.stats ? this.fighterOne.name : this.fighterTwo.name;
             this.loser = this.fighterOne.stats > this.fighterTwo.stats ? this.fighterTwo.name : this.fighterOne.name;
         },
-        async setText() {
+        setText() {
             for (const message in this.messages) {
                 this.messages[message] = pickRandomMessage(message)
             }
-
             const messageOrder = [
                 this.messages.textOne,
                 this.location,
@@ -93,6 +93,13 @@ export default {
                 this.messages.textTen,
                 this.loser,
             ]
+            this.settingUpTextAndTTS(messageOrder)
+        },
+        async settingUpTextAndTTS(messageOrder) {
+            for (const text of messageOrder) {
+                this.fullMessage += text
+            }
+            this.speak()
             for (const text of messageOrder) {
                 for (const word of text) {
                     for (const letter of word) {
@@ -115,6 +122,10 @@ export default {
             if (typeof this.characterOne.name !== 'undefined' && typeof this.characterTwo.name !== 'undefined') {
                 this.isBothFightersReady = true;
             }
+        },
+        speak() {
+            const tts = new SpeechSynthesisUtterance(this.fullMessage)
+            speechSynthesis.speak(tts)
         }
     },
     watch: {

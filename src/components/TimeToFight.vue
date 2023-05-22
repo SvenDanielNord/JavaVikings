@@ -111,18 +111,14 @@ export default {
     computed: {
         isBothFighters() {
             return (
-                typeof this.characterOne.name !== 'undefined' &&
-                typeof this.characterTwo.name !== 'undefined'
+                typeof this.characterOne.name  && typeof this.characterTwo.name
             )
         }
     },
     watch: {
         isBothFighters() {
-            if (typeof this.characterOne.name !== 'undefined' || typeof this.characterTwo.name !== 'undefined') {
-                return this.isBothFightersReady = true
-            }
-            else {
-                return this.isBothFightersReady = false
+            if (typeof this.characterOne.name !== 'undefined' && typeof this.characterTwo.name !== 'undefined') {
+                this.isBothFightersReady = true
             }
         }
     }

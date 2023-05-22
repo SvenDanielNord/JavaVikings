@@ -107,11 +107,15 @@ export default {
         sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms))
         },
+        reset() {
+            this.printText = ''
+            this.textDonePrinting = false
+        },
     },
     computed: {
         isBothFighters() {
             return (
-                typeof this.characterOne.name  && typeof this.characterTwo.name
+                typeof this.characterOne.name && typeof this.characterTwo.name
             )
         }
     },
@@ -143,7 +147,7 @@ export default {
                     {{ printText }}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                    <button @click="reset()" type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                         v-if="textDonePrinting">Close</button>
                 </div>
             </div>

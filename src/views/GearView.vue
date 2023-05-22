@@ -51,13 +51,13 @@ export default {
 <template>
     <div class="container">
         <div class="menu row justify-content-center">
-            <div class="col-3 text-center">
-                <RouterLink to="/"><button class="btn btn-danger">Home</button>
+            <div class="col-sm-4 col text-center">
+                <RouterLink to="/"><button class="btn btn-danger buttonSize">Home</button>
                 </RouterLink>
             </div>
 
-            <div class="col-3 text-center">
-                <RouterLink to="/fight"><button class="btn btn-danger">Fight</button>
+            <div class="col-sm-4 col text-center">
+                <RouterLink to="/fight"><button class="btn btn-danger buttonSize">Fight</button>
                 </RouterLink>
             </div>
         </div>

@@ -1,6 +1,4 @@
 
-
-
 <script>
 import { searchForThing } from '../data/FetchData.js'
 

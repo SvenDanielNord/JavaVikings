@@ -10,8 +10,8 @@ export default {
         return {
             location: null,
             characters: [],
-            figtherOne: [],
-            figtherTwo: [],
+            fighterOne: [],
+            fighterTwo: [],
         }
     },
     methods: {
@@ -22,12 +22,23 @@ export default {
                 this.characters.push({ name: characterName, gear: JSON.parse(characterGear) })
             }
         },
-        setFigtherOne(char) {
-            this.figtherOne = char
+        setfighterOne(char) {
+            this.takeAwayPickedFighter(this.fighterOne, char)
+            this.fighterOne = char
         },
-        setFigtherTwo(char) {
-            this.figtherTwo = char
+        setfighterTwo(char) {
+            this.takeAwayPickedFighter(this.fighterTwo, char)
+            this.fighterTwo = char
         },
+        takeAwayPickedFighter(fighter, char) {
+            this.characters = this.characters.filter(item => item !== char)
+            if (fighter.length !== 0) {
+                const characterName = localStorage.key(char.name)
+                const characterGear = localStorage.getItem(characterName)
+                this.characters.push({ name: fighter.name, gear: JSON.parse(characterGear) })
+            }
+            this.fighter = char
+        }
     },
     mounted() {
         this.loadAllCharacters()
@@ -45,7 +56,7 @@ export default {
                     Fighter 1
                 </button>
                 <ul class="dropdown-menu">
-                    <li class="dropdown-item" @click="setFigtherOne(char)" v-for="char in characters" :key="char.name">
+                    <li class="dropdown-item" @click="setfighterOne(char)" v-for="char in characters" :key="char.name">
                         {{ char.name }}
                     </li>
                 </ul>
@@ -55,7 +66,7 @@ export default {
         <div class="row mt-3">
             <div class="col"></div>
             <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-2">
-                <PictureBoxLoad :gearObject="figtherOne" />
+                <PictureBoxLoad :gearObject="fighterOne" />
             </div>
             <div class="col"></div>
         </div>
@@ -67,7 +78,7 @@ export default {
                     Fighter 2
                 </button>
                 <ul class="dropdown-menu">
-                    <li class="dropdown-item" @click="setFigtherTwo(char)" v-for="char in characters" :key="char.name">
+                    <li class="dropdown-item" @click="setfighterTwo(char)" v-for="char in characters" :key="char.name">
                         {{ char.name }}
                     </li>
                 </ul>
@@ -77,14 +88,14 @@ export default {
         <div class="row mt-3">
             <div class="col"></div>
             <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-2">
-                <PictureBoxLoad :gearObject="figtherTwo" />
+                <PictureBoxLoad :gearObject="fighterTwo" />
             </div>
             <div class="col"></div>
         </div>
 
         <div class="row mt-3">
             <div class="col-12">
-                <TimeToFight :characterOne="figtherOne" :characterTwo="figtherTwo" />
+                <TimeToFight :characterOne="fighterOne" :characterTwo="fighterTwo" />
             </div>
         </div>
 

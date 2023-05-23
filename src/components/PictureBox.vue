@@ -21,16 +21,20 @@ export default {
     methods: {
         async fetchUrl(search) {
             this.loading = true
-            let response = await searchForThing(search)
-            while (response.url.includes("emuseumplus") || response.url.includes("collections")) {
-                response = await searchForThing(search)
+            try {
+                let response = await searchForThing(search)
+                while (response.url.includes("emuseumplus") || response.url.includes("collections")) {
+                    response = await searchForThing(search)
+                }
+                this.loading = false
+                this.url = response.url
+                this.checkDescription(response.description)
+                this.generateStats()
+                this.emitStats()
             }
-            this.loading = false
-            this.url = response.url
-            this.checkDescription(response.description)
-            this.generateStats()
-            this.emitStats()
-            
+            catch(error) {
+                console.error('Error fetching gear:', error)
+            }
         },
         checkDescription(description) {
             if (typeof description === "object") {
@@ -54,12 +58,8 @@ export default {
         }
         
     },
-
     async mounted() {
-        let response = this.fetchUrl(this.search);
-        this.url = response.url;
-        this.title = response.description;
-        this.generateStats()
+        this.fetchUrl(this.search);
     },
 }
 

@@ -41,8 +41,6 @@ export default {
         addCharacterToList(i) {
             const characterName = localStorage.key(i)
             const characterGear = localStorage.getItem(characterName)
-            console.log(characterName)
-            console.log(characterGear)
             this.characters.push({ name: characterName, gear: JSON.parse(characterGear) })
         }
     },

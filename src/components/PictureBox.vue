@@ -14,7 +14,7 @@ export default {
             title: null,
             loading: false,
             stats: 0,
-            count: 0,
+            
         };
     },
 
@@ -29,7 +29,6 @@ export default {
             this.url = response.url
             this.checkDescription(response.description)
             this.generateStats()
-            
             this.emitStats()
             
         },
@@ -38,12 +37,8 @@ export default {
                 this.title = description["@value"];
             }
             else {
-                this.title = description;
+                this.title = description; 
             }
-        },
-        loadCount(){
-            this.count++
-            this.emitLoading()
         },
         generateStats() {
             if (this.url !== undefined) {
@@ -55,7 +50,7 @@ export default {
             this.$emit('stat', this.stats, this.search, this.url)
         },
         emitLoading(){
-            this.$emit('loads', this.count)
+            this.$emit('loads')
         }
         
     },
@@ -72,7 +67,7 @@ export default {
 
 <template>
     <div class="spinner-border m-5" v-if="loading"></div>
-    <div  class="col img-fluid" v-else><a @click="fetchUrl(search)" :title="title"><img id="gear" class="pictureSize border-on-hover" :src="this.url" @load="loadCount()" alt=""></a></div>
+    <div  class="col img-fluid" v-else><a @click="fetchUrl(search)" :title="title"><img id="gear" class="pictureSize border-on-hover" :src="this.url" @load="emitLoading()" alt=""></a></div>
 </template>
 
 

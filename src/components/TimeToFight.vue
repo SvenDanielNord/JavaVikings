@@ -107,7 +107,6 @@ export default {
                     }
                     await this.sleep(40)
                 }
-                this.printText += ' '
             }
             this.textDonePrinting = true
         },
@@ -125,8 +124,11 @@ export default {
         },
         speak() {
             const tts = new SpeechSynthesisUtterance(this.fullMessage)
+            tts.pitch = 0
+            tts.rate = 0.9
+            tts.lang = 'en'
             speechSynthesis.speak(tts)
-        }
+        },
     },
     watch: {
         characterOne: {

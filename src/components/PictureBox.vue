@@ -6,7 +6,7 @@ import { searchForThing } from '../data/FetchData.js'
 export default {
     
     props: ["search"],
-    emits: ["stat"],
+    emits: ["stat", 'loads'],
 
     data() {
         return {
@@ -14,6 +14,7 @@ export default {
             title: null,
             loading: false,
             stats: 0,
+            count: 0,
         };
     },
 
@@ -28,7 +29,9 @@ export default {
             this.url = response.url
             this.checkDescription(response.description)
             this.generateStats()
+            
             this.emitStats()
+            
         },
         checkDescription(description) {
             if (typeof description === "object") {
@@ -38,15 +41,22 @@ export default {
                 this.title = description;
             }
         },
+        loadCount(){
+            this.count++
+            this.emitLoading()
+        },
         generateStats() {
             if (this.url !== undefined) {
                 let randomNumber = Math.floor(Math.random() * 20) + 5
-                this.stats = ((Math.round(this.url.length / 3)) + randomNumber)
+                this.stats = ((Math.round(this.url.length / 3)) + randomNumber)     
             }
         },
         emitStats() {
             this.$emit('stat', this.stats, this.search, this.url)
         },
+        emitLoading(){
+            this.$emit('loads', this.count)
+        }
         
     },
 
@@ -62,7 +72,7 @@ export default {
 
 <template>
     <div class="spinner-border m-5" v-if="loading"></div>
-    <div  class="col img-fluid" v-else><a @click="fetchUrl(search)" :title="title"><img id="gear" class="pictureSize border-on-hover" :src="this.url" alt=""></a></div>
+    <div  class="col img-fluid" v-else><a @click="fetchUrl(search)" :title="title"><img id="gear" class="pictureSize border-on-hover" :src="this.url" @load="loadCount()" alt=""></a></div>
 </template>
 
 

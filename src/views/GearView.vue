@@ -45,10 +45,10 @@ export default {
                 this.saveAlert = false;
             }, 3000);
         },
-        checkLoad(count){
-            if(count > 0){
+        checkLoad(){
+            
                 this.countPicBox++
-            }
+            
             if (this.countPicBox > 5) {     
                 this.loadSome = false;
             }
@@ -109,15 +109,15 @@ export default {
 
 
     <div class="container col-12 text-center">
-        <PictureBox @loads="(count) => checkLoad(count)"  @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemHelmet" search="hjälm" @load="console.log(5)" />
+        <PictureBox @loads="() => checkLoad()"  @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemHelmet" search="hjälm" @load="console.log(5)" />
         <div class="row justify-content-center row-cols-auto">
-            <PictureBox @loads="(count) => checkLoad(count)" @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemSword mt-4" search="svärd" />
-            <PictureBox @loads="(count) => checkLoad(count)" @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemArmor mt-4" search="tröja" />
-            <PictureBox @loads="(count) => checkLoad(count)" @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemShield mt-4" search="sköld" />
+            <PictureBox @loads="() => checkLoad()" @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemSword mt-4" search="svärd" />
+            <PictureBox @loads="() => checkLoad()" @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemArmor mt-4" search="tröja" />
+            <PictureBox @loads="() => checkLoad()" @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemShield mt-4" search="sköld" />
         </div>
 
-        <PictureBox @loads="(count) => checkLoad(count)" @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemLeggs mt-4" search="byxa" />
-        <PictureBox @loads="(count) => checkLoad(count)" @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemFeet mt-4" search="skor" />
+        <PictureBox @loads="() => checkLoad()" @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemLeggs mt-4" search="byxa" />
+        <PictureBox @loads="() => checkLoad()" @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemFeet mt-4" search="skor" />
     </div>
 </template>
 

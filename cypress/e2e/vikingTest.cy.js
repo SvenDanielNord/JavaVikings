@@ -37,21 +37,3 @@ describe('path test', () => {
      
   })
   
-  
-  // cy.get('img').should('have.attr', 'src').should('not.eq', '')
-
-  // cy.get('').each(($li) => cy.log($li.text()))
-
-  // cy.get('[src = attr]').should('not.eq', '')
-
-  // cy.get('img').should('have.attr', 'src').then(($src) =>{
-
-  // expect($src.val()).not.to.eq('') 
-
-    
-  // })
-  
-  // cy.get('[src]').should('not.have.value', '')
-
-  // cy.get('img').should('have.attr', 'src').and('not.eq', '')
-  // cy.get('img').should('have.attr', 'src').and('be.empty')

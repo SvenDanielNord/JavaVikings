@@ -17,9 +17,7 @@ export default {
     methods: {
         loadAllCharacters() {
             for (let i = 0; i < localStorage.length; i++) {
-                const characterName = localStorage.key(i)
-                const characterGear = localStorage.getItem(characterName)
-                this.characters.push({ name: characterName, gear: JSON.parse(characterGear) })
+                this.addCharacterToList(i)
             }
         },
         setfighterOne(char) {
@@ -33,10 +31,19 @@ export default {
         takeAwayPickedFighter(fighter, char) {
             this.characters = this.characters.filter(item => item !== char)
             if (fighter.length !== 0) {
-                const characterName = localStorage.key(char.name)
-                const characterGear = localStorage.getItem(characterName)
-                this.characters.push({ name: fighter.name, gear: JSON.parse(characterGear) })
+                for (let i = 0; i < localStorage.length; i++) {
+                    if (localStorage.key(i) === fighter.name) {
+                        this.addCharacterToList(i)
+                    }
+                }
             }
+        },
+        addCharacterToList(i) {
+            const characterName = localStorage.key(i)
+            const characterGear = localStorage.getItem(characterName)
+            console.log(characterName)
+            console.log(characterGear)
+            this.characters.push({ name: characterName, gear: JSON.parse(characterGear) })
         }
     },
     mounted() {

@@ -10,7 +10,6 @@ describe('path test', () => {
     })
 
     it('Checks if player is saved and that the saved character has picture url:s', () => {
-      
        
       cy.visit('/gear')
 

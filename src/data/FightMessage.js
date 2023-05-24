@@ -7,11 +7,11 @@ let messages = {
         "Surrounded by tranquility in "
     ],
     textTwo: [
-        "relishes the tranquility until an unexpected encounter with ",
-        "basks in the peaceful ambiance until the unexpected arrival of ",
-        "enjoys a moment of serenity until ",
-        "finds solace in the calmness until ",
-        "is at peace until "
+        " relishes the tranquility until an unexpected encounter with ",
+        " basks in the peaceful ambiance until the unexpected arrival of ",
+        " enjoys a moment of serenity until ",
+        " finds solace in the calmness until ",
+        " is at peace until "
     ],
     textThree: [
         " shatters the silence. ",

@@ -10,6 +10,7 @@ export default {
             loser: null,
             printText: '',
             fullMessage: '',
+            forcedSpace: ' ',
             textDonePrinting: false,
             isBothFightersReady: false,
             fighterOne: {
@@ -76,6 +77,7 @@ export default {
             const messageOrder = [
                 this.messages.textOne,
                 this.location,
+                this.forcedSpace,
                 this.fighterOne.name,
                 this.messages.textTwo,
                 this.fighterTwo.name,
@@ -127,7 +129,7 @@ export default {
             tts.pitch = 0
             tts.rate = 0.9
             tts.lang = 'en'
-            speechSynthesis.speak(tts)
+            //speechSynthesis.speak(tts)
         },
     },
     watch: {

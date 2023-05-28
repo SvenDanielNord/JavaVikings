@@ -25,4 +25,9 @@
    ]
  })
 
+ router.beforeEach((to, from, next) => {
+  $(".modal-backdrop").remove();
+  next();
+});
+
  export default router

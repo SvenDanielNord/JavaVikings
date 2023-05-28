@@ -194,5 +194,6 @@ export default {
 <style>
 .white-mute-button {
     color: white;
+    margin: 3px;
 }
 </style>

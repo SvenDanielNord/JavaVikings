@@ -122,7 +122,7 @@ export default {
         speedUpText() {
             this.isSlowPrint = false
         },
-        reloadPage() {
+        restorePage() {
             this.printText = ''
             this.fullMessage = ''
             this.isDonePrinting = false
@@ -202,7 +202,7 @@ export default {
                     {{ printText }}
                 </div>
                 <div class="modal-footer">
-                    <button @click="reloadPage()" v-if="isDonePrinting" type="button" class="btn btn-danger"
+                    <button @click="restorePage()" v-if="isDonePrinting" type="button" class="btn btn-danger"
                         data-bs-dismiss="modal">Close</button>
                 </div>
             </div>

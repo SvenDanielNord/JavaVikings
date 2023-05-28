@@ -75,7 +75,6 @@ export default {
         <div class="row mt-3">
             <div class="col-12">
                 <div id="save" class="mb-3 input-group justify-content-center">
-                    <!-- Borde detta vara en form? -->
                     <button button class="btn btn-danger " @click="saveCharacter">Save</button>
                     <input type="text" class="form-group" id="name" v-model="characterName" required minlength="4"
                         maxlength="16" size="11" placeholder="Character name" aria-label="Save"

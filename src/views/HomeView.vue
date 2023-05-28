@@ -64,4 +64,9 @@ p {
     margin-top: 3rem;
     border-radius: 2rem;
 }
+.btn-danger{
+ 
+    background-color: rgb(105, 81, 66) !important;
+    border-color: rgb(73, 31, 0) !important;
+}
 </style>

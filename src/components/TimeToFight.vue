@@ -12,8 +12,9 @@ export default {
             fullMessage: '',
             forcedSpace: ' ',
             isDonePrinting: false,
-            isBothFightersReady: false,
+            isSlowPrint: true,
             isTTS: true,
+            isBothFightersReady: false,
             fighterOne: {
                 name: null,
                 stats: null
@@ -108,7 +109,9 @@ export default {
                     for (const letter of word) {
                         this.printText += letter
                     }
-                    await this.sleep(40)
+                    if (this.isSlowPrint) {
+                        await this.sleep(40)
+                    }
                 }
             }
             this.isDonePrinting = true
@@ -116,8 +119,15 @@ export default {
         sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms))
         },
-        reloadPage() {
-            window.location.reload()
+        speedUpText() {
+            this.isSlowPrint = false
+        },
+        restorePage() {
+            this.printText = ''
+            this.fullMessage = ''
+            this.isDonePrinting = false
+            this.isSlowPrint = true
+            window.speechSynthesis.cancel()
         },
         checkFightersReady() {
             if (typeof this.characterOne.name !== 'undefined' && typeof this.characterTwo.name !== 'undefined') {
@@ -127,8 +137,9 @@ export default {
         speak() {
             const tts = new SpeechSynthesisUtterance(this.fullMessage)
             tts.pitch = 0
-            tts.rate = 0.9
+            tts.rate = 1.2
             tts.lang = 'en'
+            tts.volume = 0.1
             if (this.isTTS) {
                 window.speechSynthesis.speak(tts)
             }
@@ -178,13 +189,21 @@ export default {
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button @click="reloadPage()" type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                     <h1 class="modal-title w-100" id="staticBackdropLabel">Fight</h1>
+                    <svg @click="speedUpText" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z" />
+                        <path fill-rule="evenodd"
+                            d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z" />
+                    </svg>
                 </div>
                 <div>
                     {{ printText }}
                 </div>
                 <div class="modal-footer">
+                    <button @click="restorePage()" v-if="isDonePrinting" type="button" class="btn btn-danger"
+                        data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

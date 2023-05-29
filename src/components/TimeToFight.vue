@@ -53,6 +53,7 @@ export default {
                 this.location = await getLocation()
             } catch (error) {
                 alert(error.message)
+                window.location.reload()
             }
         },
         makePlayer() {

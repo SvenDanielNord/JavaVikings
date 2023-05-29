@@ -2,6 +2,11 @@
 import TimeToFight from './TimeToFight.vue'
 import PictureBoxLoad from './PictureBoxLoad.vue'
 
+
+/**
+* Load saved characters from localStorage.
+* Render dropdown menus where you choose characters.
+*/
 export default {
     components: {
         PictureBoxLoad, TimeToFight

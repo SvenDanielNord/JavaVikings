@@ -26,6 +26,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
  $(".modal-backdrop").remove();
+ $(window.speechSynthesis.cancel())
  next();
 });
 

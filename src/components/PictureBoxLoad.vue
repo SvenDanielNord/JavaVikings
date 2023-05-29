@@ -31,7 +31,6 @@ export default {
                 newListOfUrls.push(item.url)
             }
             this.listOfUrls = newListOfUrls
-            newListOfUrls = []
         },
     },
 }
@@ -44,29 +43,29 @@ export default {
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <img class="smallPictures" :src="listOfUrls[0]" alt="">
+                        <img :src="listOfUrls[0]" alt="">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-4">
-                        <img class="smallPictures" :src="listOfUrls[2]" alt="">
+                        <img :src="listOfUrls[2]" alt="">
                     </div>
                     <div class="col-4">
-                        <img class="smallPictures" :src="listOfUrls[1]" alt="">
+                        <img :src="listOfUrls[1]" alt="">
                     </div>
                     <div class="col-4">
-                        <img class="smallPictures" :src="listOfUrls[3]" alt="">
+                        <img :src="listOfUrls[3]" alt="">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12">
-                        <img class="smallPictures" :src="listOfUrls[4]" alt="">
+                        <img :src="listOfUrls[4]" alt="">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <img class="smallPictures" :src="listOfUrls[5]" alt="">
+                        <img :src="listOfUrls[5]" alt="">
                     </div>
                 </div>
             </div>
@@ -78,7 +77,7 @@ export default {
 </template>
 
 <style scoped>
-.smallPictures {
+img {
     width: 40px;
     height: 40px;
     border: 1px solid black;

@@ -5,7 +5,7 @@ import PictureBoxLoad from './PictureBoxLoad.vue'
 
 /**
 * Load saved characters from localStorage.
-* Render dropdown menus where you choose characters.
+* Render dropdown menus where you choose characters (fighterOne and FighterTwo).
 */
 export default {
     components: {
@@ -13,7 +13,6 @@ export default {
     },
     data() {
         return {
-            location: null,
             characters: [],
             fighterOne: [],
             fighterTwo: [],

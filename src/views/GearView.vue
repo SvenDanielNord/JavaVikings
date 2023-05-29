@@ -45,15 +45,15 @@ export default {
                 this.saveAlert = false;
             }, 3000);
         },
-        checkLoad(){
-            
-                this.countPicBox++
-            
-            if (this.countPicBox > 5) {     
+        checkLoad() {
+
+            this.countPicBox++
+
+            if (this.countPicBox > 5) {
                 this.loadSome = false;
             }
         },
-        
+
         clearCharacter() {
             localStorage.clear()
         },
@@ -80,9 +80,10 @@ export default {
         <div class="row mt-3">
             <div class="col-12">
 
-                <div  id="save" class="mb-3 input-group justify-content-center">
+                <div id="save" class="mb-3 input-group justify-content-center">
                     <!-- Borde detta vara en form? -->
-                    <button v-if="this.loadSome" disabled="true" button class="btn btn-danger " @click="saveCharacter">Save</button>
+                    <button v-if="this.loadSome" disabled="true" button class="btn btn-danger "
+                        @click="saveCharacter">Save</button>
                     <button v-else button class="btn btn-danger " @click="saveCharacter">Save</button>
                     <input type="text" class="form-group" id="name" v-model="characterName" required minlength="4"
                         maxlength="16" size="11" placeholder="Character name" aria-label="Save"
@@ -103,16 +104,44 @@ export default {
     </div>
 
 
-    <div class="container col-12 text-center">
-        <PictureBox @loads="() => checkLoad()"  @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemHelmet" search="hjälm" @load="console.log(5)" />
-        <div class="row justify-content-center row-cols-auto">
-            <PictureBox @loads="() => checkLoad()" @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemSword mt-4" search="svärd" />
-            <PictureBox @loads="() => checkLoad()" @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemArmor mt-4" search="tröja" />
-            <PictureBox @loads="() => checkLoad()" @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemShield mt-4" search="sköld" />
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-12">
+                <PictureBox @loads="() => checkLoad()" @stat="(stat, name, url) => updateItems(stat, name, url)"
+                    class="itemHelmet" search="hjälm" @load="console.log(5)" />
+            </div>
         </div>
 
-        <PictureBox @loads="() => checkLoad()" @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemLeggs mt-4" search="byxa" />
-        <PictureBox @loads="() => checkLoad()" @stat="(stat, name, url) => updateItems(stat, name, url)" class="itemFeet mt-4" search="skor" />
+        <div class="row justify-content-center">
+            <div class="col">
+                <PictureBox @loads="() => checkLoad()" @stat="(stat, name, url) => updateItems(stat, name, url)"
+                    class="itemSword" search="svärd" />
+            </div>
+
+            <div class="col">
+                <PictureBox @loads="() => checkLoad()" @stat="(stat, name, url) => updateItems(stat, name, url)"
+                    class="itemArmor" search="tröja" />
+            </div>
+
+            <div class="col">
+                <PictureBox @loads="() => checkLoad()" @stat="(stat, name, url) => updateItems(stat, name, url)"
+                    class="itemShield" search="sköld" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <PictureBox @loads="() => checkLoad()" @stat="(stat, name, url) => updateItems(stat, name, url)"
+                    class="itemLeggs" search="byxa" />
+            </div>
+        </div>
+        
+        <div class = "row">
+            <div class= "col">
+                <PictureBox @loads="() => checkLoad()" @stat="(stat, name, url) => updateItems(stat, name, url)"
+                    class="itemFeet" search="skor" />
+            </div>
+        </div>
     </div>
 </template>
 
@@ -121,8 +150,11 @@ export default {
     margin-top: 3 !important;
 }
 
+
+
 .saveAlertMessage {
     color: rgb(224, 44, 44);
+    background-color: rgb(255, 255, 255);
     border-radius: 0.5rem;
 }
 </style>

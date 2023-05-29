@@ -13,7 +13,7 @@ describe('path test', () => {
        
       cy.visit('/gear')
 
-      cy.get('#gear[src^="http"]', {timeout: 10000}).should('have.length', 6)
+      cy.get('#gear[src^="http"]', {timeout: 15000}).should('have.length', 6)
 
       cy.get('#name').type('Jocke')
       

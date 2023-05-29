@@ -21,6 +21,7 @@ export default {
             characterName: '',
             totalStats: 0,
             saveAlert: false,
+            enterNameAlert: false,
             loadSome: true,
             countPicBox: 0,
         }
@@ -35,14 +36,24 @@ export default {
             }
         },
         saveCharacter() {
-            localStorage.setItem(this.characterName, JSON.stringify(this.items))
-            this.showSaveAlert()
+            if (this.characterName.length > 0) {
+                localStorage.setItem(this.characterName, JSON.stringify(this.items))
+                this.showSaveAlert()
+            } else {
+                this.showEnterNameAlert()
+            }
         },
         showSaveAlert() {
             this.saveAlert = true
             this.characterName = "";
             setTimeout(() => {
                 this.saveAlert = false;
+            }, 3000);
+        },
+        showEnterNameAlert() {
+            this.enterNameAlert = true
+            setTimeout(() => {
+                this.enterNameAlert = false;
             }, 3000);
         },
         checkLoad() {
@@ -91,7 +102,10 @@ export default {
         </div>
 
         <div class="row text-center justify-content-center">
-            <div v-if="saveAlert" class="col-5 saveAlertMessage"> Character saved!</div>
+            <div v-if="saveAlert" class="col-5 alertMessage"> Character saved!</div>
+        </div>
+        <div class="row text-center justify-content-center">
+            <div v-if="enterNameAlert" class="col-5 alertMessage"> You have to enter a name!</div>
         </div>
     </div>
 
@@ -134,9 +148,9 @@ export default {
                     class="itemLeggs" search="byxa" />
             </div>
         </div>
-        
-        <div class = "row">
-            <div class= "col mt-4">
+
+        <div class="row">
+            <div class="col mt-4">
                 <PictureBox @loads="() => checkLoad()" @stat="(stat, name, url) => updateItems(stat, name, url)"
                     class="itemFeet" search="skor" />
             </div>
@@ -146,8 +160,8 @@ export default {
 </template>
 
 <style>
-
-.saveAlertMessage {
+.alertMessage {
     color: rgb(224, 44, 44);
     border-radius: 0.5rem;
-}</style>
+}
+</style>

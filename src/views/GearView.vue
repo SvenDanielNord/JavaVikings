@@ -79,7 +79,6 @@ export default {
             <div class="col-12">
 
                 <div id="save" class="mb-3 input-group justify-content-center">
-                    <!-- Borde detta vara en form? -->
                     <button v-if="this.loadSome" disabled="true" button class="btn btn-danger "
                         @click="saveCharacter">Save</button>
                     <button v-else button class="btn btn-danger " @click="saveCharacter">Save</button>
@@ -105,7 +104,7 @@ export default {
 
     <div class="container text-center">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 mt-4">
                 <PictureBox @loads="() => checkLoad()" @stat="(stat, name, url) => updateItems(stat, name, url)"
                     class="itemHelmet" search="hjälm" @load="console.log(5)" />
             </div>
@@ -130,16 +129,16 @@ export default {
 
 
         <div class="row">
-            <div class="col">
+            <div class="col mt-4">
                 <PictureBox @loads="() => checkLoad()" @stat="(stat, name, url) => updateItems(stat, name, url)"
-                    class="itemLeggs mt-4" search="byxa" />
+                    class="itemLeggs" search="byxa" />
             </div>
         </div>
         
         <div class = "row">
-            <div class= "col">
+            <div class= "col mt-4">
                 <PictureBox @loads="() => checkLoad()" @stat="(stat, name, url) => updateItems(stat, name, url)"
-                    class="itemFeet mt-4" search="skor" />
+                    class="itemFeet" search="skor" />
             </div>
         </div>
 

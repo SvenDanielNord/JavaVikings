@@ -1,5 +1,9 @@
 <script>
 
+/**
+* Render saved characters with small pictureboxes.
+* Input: list of URLs with pictures of the items.
+*/
 export default {
     props: {
         gearObject: {
@@ -12,6 +16,9 @@ export default {
             listOfUrls: [],
         };
     },
+    /**
+    * Watcher that can update the list of URLs when new input from parent.
+    */
     watch: {
         gearObject() {
             this.updateUrlList()
@@ -77,17 +84,16 @@ export default {
     border: 1px solid black;
 }
 
-.fighterBackground{
+.fighterBackground {
     background-color: rgb(0, 0, 0, .5);
     border-radius: 1rem;
 }
 
-p{
+p {
     color: aliceblue;
     background-color: rgb(110, 63, 63);
     border-radius: 1rem;
     margin-top: 1rem;
 }
-
 </style>
 

@@ -2,7 +2,6 @@
 <script>
 import { searchForThing } from '../data/FetchData.js'
 
-
 export default {
 
     props: ["search"],

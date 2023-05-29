@@ -49,9 +49,15 @@ export default {
             }
         },
         emitStats() {
+            /**
+             * Emits stats 
+             */
             this.$emit('stat', this.stats, this.search, this.url)
         },
         emitLoading() {
+            /**
+             * Emits when picture is done loading
+             */
             this.$emit('loads')
         }
     },
@@ -66,7 +72,16 @@ export default {
     <div v-if="loading" class="pictureSize container">
         <div class="spinner-border"></div>
     </div>
-    <div v-else><a @click="fetchUrl(search)" :title="title"><img id="gear" class="pictureSize border-on-hover"
+ 
+    <div v-else>
+        <!-- 
+            event @load
+            triggered when img is fully loaded
+            event @click 
+            triggred by click 
+            calls method to get an new item
+        -->
+        <a @click="fetchUrl(search)" :title="title"><img id="gear" class="pictureSize border-on-hover"
                 :src="this.url" @load="emitLoading()" alt=""></a></div>
 </template>
 

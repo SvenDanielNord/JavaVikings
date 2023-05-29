@@ -13,7 +13,7 @@ describe('path test', () => {
        
       cy.visit('/gear')
 
-      cy.get('#gear[src^="http"]').should('have.length', 6)
+      cy.get('#gear[src^="http"]', {timeout: 10000}).should('have.length', 6)
 
       cy.get('#name').type('Jocke')
       
@@ -25,6 +25,8 @@ describe('path test', () => {
 
       cy.get('li').contains('Jocke').click()
 
+      cy.get('.smallPictures').should('have.length', 6)
+
       cy.get('.smallPictures').each((item) => {
         
         cy.wrap(item).should('have.attr', 'src').should('not.eq', '').and('includes','http')
@@ -33,6 +35,5 @@ describe('path test', () => {
 
     })
        
-     
   })
   

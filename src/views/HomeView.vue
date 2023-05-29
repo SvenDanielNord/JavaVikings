@@ -69,4 +69,8 @@ p {
     background-color: rgb(105, 81, 66) !important;
     border-color: rgb(73, 31, 0) !important;
 }
+.btn-danger:hover{
+    background-color: rgb(73, 31, 0) !important;
+
+}
 </style>

@@ -46,9 +46,7 @@ export default {
             }, 3000);
         },
         checkLoad() {
-
             this.countPicBox++
-
             if (this.countPicBox > 5) {
                 this.loadSome = false;
             }
@@ -104,6 +102,7 @@ export default {
     </div>
 
 
+
     <div class="container text-center">
         <div class="row">
             <div class="col-12">
@@ -142,6 +141,7 @@ export default {
                     class="itemFeet" search="skor" />
             </div>
         </div>
+
     </div>
 </template>
 
@@ -156,5 +156,4 @@ export default {
     color: rgb(224, 44, 44);
     background-color: rgb(255, 255, 255);
     border-radius: 0.5rem;
-}
-</style>
+}</style>

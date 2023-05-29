@@ -75,7 +75,7 @@ export default {
             </div>
         </div>
 
-        <div class="row mt-3">
+        <div class="row mt-4">
             <div class="col-12">
 
                 <div id="save" class="mb-3 input-group justify-content-center">
@@ -112,33 +112,34 @@ export default {
         </div>
 
         <div class="row justify-content-center">
-            <div class="col">
+            <div class="col col-md-3 col-lg-2 mt-4">
                 <PictureBox @loads="() => checkLoad()" @stat="(stat, name, url) => updateItems(stat, name, url)"
                     class="itemSword" search="svärd" />
             </div>
 
-            <div class="col">
+            <div class="col col-md-3 col-lg-2 mt-4">
                 <PictureBox @loads="() => checkLoad()" @stat="(stat, name, url) => updateItems(stat, name, url)"
                     class="itemArmor" search="tröja" />
             </div>
 
-            <div class="col">
+            <div class=" col col-md-3 col-lg-2 mt-4">
                 <PictureBox @loads="() => checkLoad()" @stat="(stat, name, url) => updateItems(stat, name, url)"
                     class="itemShield" search="sköld" />
             </div>
         </div>
 
+
         <div class="row">
             <div class="col">
                 <PictureBox @loads="() => checkLoad()" @stat="(stat, name, url) => updateItems(stat, name, url)"
-                    class="itemLeggs" search="byxa" />
+                    class="itemLeggs mt-4" search="byxa" />
             </div>
         </div>
         
         <div class = "row">
             <div class= "col">
                 <PictureBox @loads="() => checkLoad()" @stat="(stat, name, url) => updateItems(stat, name, url)"
-                    class="itemFeet" search="skor" />
+                    class="itemFeet mt-4" search="skor" />
             </div>
         </div>
 
@@ -146,14 +147,8 @@ export default {
 </template>
 
 <style>
-.mt-3 {
-    margin-top: 3 !important;
-}
-
-
 
 .saveAlertMessage {
     color: rgb(224, 44, 44);
-    background-color: rgb(255, 255, 255);
     border-radius: 0.5rem;
 }</style>

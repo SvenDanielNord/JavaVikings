@@ -52,7 +52,7 @@ export default {
             try {
                 this.location = await getLocation()
             } catch (error) {
-                console.error('Error fetching location:', error)
+                alert(error.message)
             }
         },
         makePlayer() {

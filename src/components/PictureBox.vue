@@ -14,8 +14,7 @@ export default {
             title: null,
             loading: false,
             stats: 0,
-
-        };
+        }
     },
 
     methods: {
@@ -33,7 +32,7 @@ export default {
                 this.emitStats()
             }
             catch (error) {
-                console.error('Error fetching gear:', error)
+                alert(error.message)
             }
         },
         checkDescription(description) {
@@ -56,7 +55,6 @@ export default {
         emitLoading() {
             this.$emit('loads')
         }
-
     },
     async mounted() {
         this.fetchUrl(this.search);
@@ -80,19 +78,6 @@ export default {
     width: 125px;
     height: 125px;
 }
-
-.testPad {
-    padding: 43.5px;
-}
-
-/* .spinner {
-    position: fixed;
-    z-index: 1031;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-} */
-
 
 @media (max-width: 768px) {
     .pictureSize {

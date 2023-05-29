@@ -25,9 +25,9 @@ describe('path test', () => {
 
       cy.get('li').contains('Jocke').click()
 
-      cy.get('.smallPictures').should('have.length', 6)
+      cy.get('.smallPictures > img').should('have.length', 6)
 
-      cy.get('.smallPictures').each((item) => {
+      cy.get('.smallPictures > img').each((item) => {
         
         cy.wrap(item).should('have.attr', 'src').should('not.eq', '').and('includes','http')
 

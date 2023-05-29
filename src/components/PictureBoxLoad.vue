@@ -42,29 +42,29 @@ export default {
         <div class="fighterBackground" v-if="listOfUrls.length > 0">
             <div class="container">
                 <div class="row">
-                    <div class="col-12">
-                        <img :src="listOfUrls[0]" alt="">
+                    <div class="smallPictures col-12">
+                        <img  :src="listOfUrls[0]" alt="">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-4">
+                    <div class="smallPictures col-4">
                         <img :src="listOfUrls[2]" alt="">
                     </div>
-                    <div class="col-4">
+                    <div class="smallPictures col-4">
                         <img :src="listOfUrls[1]" alt="">
                     </div>
-                    <div class="col-4">
+                    <div class="smallPictures col-4">
                         <img :src="listOfUrls[3]" alt="">
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-12">
+                    <div class="smallPictures col-12">
                         <img :src="listOfUrls[4]" alt="">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12">
+                    <div class="smallPictures col-12">
                         <img :src="listOfUrls[5]" alt="">
                     </div>
                 </div>

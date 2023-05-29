@@ -1,5 +1,9 @@
 <script>
 
+/**
+* Render saved characters with small pictureboxes.
+* Input: list of URLs with pictures of the items.
+*/
 export default {
     props: {
         gearObject: {
@@ -12,6 +16,9 @@ export default {
             listOfUrls: [],
         };
     },
+    /**
+    * Watcher that can update the list of URLs when new input from parent.
+    */
     watch: {
         gearObject() {
             this.updateUrlList()
@@ -24,7 +31,6 @@ export default {
                 newListOfUrls.push(item.url)
             }
             this.listOfUrls = newListOfUrls
-            newListOfUrls = []
         },
     },
 }
@@ -37,29 +43,29 @@ export default {
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <img class="smallPictures" :src="listOfUrls[0]" alt="">
+                        <img :src="listOfUrls[0]" alt="">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-4">
-                        <img class="smallPictures" :src="listOfUrls[2]" alt="">
+                        <img :src="listOfUrls[2]" alt="">
                     </div>
                     <div class="col-4">
-                        <img class="smallPictures" :src="listOfUrls[1]" alt="">
+                        <img :src="listOfUrls[1]" alt="">
                     </div>
                     <div class="col-4">
-                        <img class="smallPictures" :src="listOfUrls[3]" alt="">
+                        <img :src="listOfUrls[3]" alt="">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12">
-                        <img class="smallPictures" :src="listOfUrls[4]" alt="">
+                        <img :src="listOfUrls[4]" alt="">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <img class="smallPictures" :src="listOfUrls[5]" alt="">
+                        <img :src="listOfUrls[5]" alt="">
                     </div>
                 </div>
             </div>
@@ -71,23 +77,22 @@ export default {
 </template>
 
 <style scoped>
-.smallPictures {
+img {
     width: 40px;
     height: 40px;
     border: 1px solid black;
 }
 
-.fighterBackground{
+.fighterBackground {
     background-color: rgb(0, 0, 0, .5);
     border-radius: 1rem;
 }
 
-p{
+p {
     color: aliceblue;
     background-color: rgb(110, 63, 63);
     border-radius: 1rem;
     margin-top: 1rem;
 }
-
 </style>
 

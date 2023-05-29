@@ -2,13 +2,17 @@
 import TimeToFight from './TimeToFight.vue'
 import PictureBoxLoad from './PictureBoxLoad.vue'
 
+
+/**
+* Load saved characters from localStorage.
+* Render dropdown menus where you choose characters (fighterOne and FighterTwo).
+*/
 export default {
     components: {
         PictureBoxLoad, TimeToFight
     },
     data() {
         return {
-            location: null,
             characters: [],
             fighterOne: [],
             fighterTwo: [],

@@ -2,6 +2,16 @@
 import { getLocation } from '../data/FetchLocation.js'
 import { pickRandomMessage } from '../data/FightMessage'
 
+/**
+ * This is the main part of our whole app, it handles a bit too much but that's how it ended up.
+ * To begin with, it set's up a "random" text and location with the help from FetchLocation.js
+ * it also checks who will be the winner with the help of the stats that's generated.
+ * That's not all, it also prints the text in a satisfying way.
+ * And on top of all that it also adds text to speech so you don't have to read the fight by yourself.
+ * 
+ * I know it sounds like a lot but it's basically handles the fight mechanic
+ */
+
 export default {
     data() {
         return {
@@ -10,19 +20,13 @@ export default {
             loser: null,
             printText: '',
             fullMessage: '',
+            // forcedSpace is there to not have "magic variable later in the code"
             forcedSpace: ' ',
             isDonePrinting: false,
             isSlowPrint: true,
             isTTS: true,
             isBothFightersReady: false,
-            fighterOne: {
-                name: null,
-                stats: null
-            },
-            fighterTwo: {
-                name: null,
-                stats: null
-            },
+            // Here we store the messages that are randomly generated
             messages: {
                 textOne: null,
                 textTwo: null,
@@ -37,13 +41,19 @@ export default {
             }
         }
     },
+    // This is where we store the data of the two picked fighters from FightView.vue
     props: {
         characterOne: {},
         characterTwo: {}
     },
     methods: {
+        /**
+         * Here we start by checking who the winner is, then we get the location of the fight.
+         * But to make sure that the location is fetched before texts start printing we use a lambda to make wait for getFightLocation to finish
+         * before we continue with setText
+         */
         startFight() {
-            this.makePlayer()
+            this.checkWinner()
             this.getFightLocation().then(() => {
                 this.setText()
             })
@@ -53,25 +63,17 @@ export default {
                 this.location = await getLocation()
             } catch (error) {
                 alert(error.message)
+                window.location.reload()
             }
-        },
-        makePlayer() {
-            this.fighterOne.stats = 0
-            this.fighterOne.name = this.characterOne.name
-            for (const fighter of this.characterOne.gear) {
-                this.fighterOne.stats += fighter.itemStat;
-            }
-            this.fighterTwo.stats = 0
-            this.fighterTwo.name = this.characterTwo.name
-            for (const fighter of this.characterTwo.gear) {
-                this.fighterTwo.stats += fighter.itemStat;
-            }
-            this.checkWinner()
         },
         checkWinner() {
-            this.winner = this.fighterOne.stats > this.fighterTwo.stats ? this.fighterOne.name : this.fighterTwo.name;
-            this.loser = this.fighterOne.stats > this.fighterTwo.stats ? this.fighterTwo.name : this.fighterOne.name;
+            this.winner = this.characterOne.stats > this.characterTwo.stats ? this.characterOne.name : this.characterTwo.name;
+            this.loser = this.characterOne.stats > this.characterTwo.stats ? this.characterTwo.name : this.characterOne.name;
         },
+        /**
+         * This is where the real magic happens, here we call the pickRandomMessage ten times(once per message)
+         * and set up the correct order of the messages.
+         */
         setText() {
             for (const message in this.messages) {
                 this.messages[message] = pickRandomMessage(message)
@@ -80,17 +82,17 @@ export default {
                 this.messages.textOne,
                 this.location,
                 this.forcedSpace,
-                this.fighterOne.name,
+                this.characterOne.name,
                 this.messages.textTwo,
-                this.fighterTwo.name,
+                this.characterTwo.name,
                 this.messages.textThree,
                 this.messages.textFour,
                 this.messages.textFive,
-                this.fighterOne.name,
+                this.characterOne.name,
                 this.messages.textSix,
-                this.fighterTwo.name,
+                this.characterTwo.name,
                 this.messages.textSeven,
-                this.fighterTwo.name,
+                this.characterTwo.name,
                 this.messages.textEight,
                 this.messages.textNine,
                 this.winner,
@@ -99,6 +101,9 @@ export default {
             ]
             this.settingUpTextAndTTS(messageOrder)
         },
+        /**
+         * Here we split the text up in to two parts, one that goes to the tts function and one that goes to the split words function.
+         */
         async settingUpTextAndTTS(messageOrder) {
             for (const text of messageOrder) {
                 this.fullMessage += text
@@ -116,12 +121,19 @@ export default {
             }
             this.isDonePrinting = true
         },
+        /**
+         * A handmade sleep function to make sure the text prints in a nice letter by letter way.
+         * @param {number of milliseconds to wait} ms 
+         */
         sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms))
         },
         speedUpText() {
             this.isSlowPrint = false
         },
+        /**
+         * This is a reset function that sets the page back to zero when you close the fight text.
+         */
         restorePage() {
             this.printText = ''
             this.fullMessage = ''
@@ -129,17 +141,23 @@ export default {
             this.isSlowPrint = true
             window.speechSynthesis.cancel()
         },
+        /**
+         * To make sure that the player won't try to fight with only one character we hide the fight button until both are picked 
+         */
         checkFightersReady() {
             if (typeof this.characterOne.name !== 'undefined' && typeof this.characterTwo.name !== 'undefined') {
                 this.isBothFightersReady = true;
             }
         },
+        /**
+         * This sets up the tts, and a check to see if the player want's to hear to sound or not
+         */
         speak() {
             const tts = new SpeechSynthesisUtterance(this.fullMessage)
             tts.pitch = 0
             tts.rate = 1.2
             tts.lang = 'en'
-            tts.volume = 0.1
+            tts.volume = 0.5
             if (this.isTTS) {
                 window.speechSynthesis.speak(tts)
             }
@@ -148,6 +166,9 @@ export default {
             this.isTTS = !this.isTTS
         }
     },
+    /**
+     * This part works together with checkFightersReady to see if both characters are picked
+     */
     watch: {
         characterOne: {
             handler() {
@@ -169,6 +190,7 @@ export default {
         data-bs-target="#staticBackdrop" @click="startFight()">
         Fight!
     </button>
+    <!--Some svg pictures taken from bootstrap for volume/mute button-->
     <svg v-if="isTTS" @click="switchTTS()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
         class="bi bi-volume-up-fill white-mute-button" viewBox="0 0 16 16">
         <path

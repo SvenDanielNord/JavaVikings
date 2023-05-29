@@ -1,5 +1,5 @@
 async function getLocation() {
-    const apiUrl = `https://kulturarvsdata.se/ksamso/api?method=search&query=geoDataExists=j&hitsPerPage=20`
+    const apiUrl = `https://kulturarvsdata.se/ksamsok/api?method=search&query=geoDataExists=j&hitsPerPage=20`
     let response = await fetch(apiUrl, {
         headers: {
             Accept: 'application/json'

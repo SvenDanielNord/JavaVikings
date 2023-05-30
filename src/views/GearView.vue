@@ -2,10 +2,12 @@
 
 import PictureBox from '../components/PictureBox.vue';
 
-
+/*
+* View for generating gear. Uses PictureBox to render pictures.
+* Handles saving characters to local storage with items and name.
+*/
 export default {
     components: {
-
         PictureBox
     },
     data() {
@@ -27,6 +29,10 @@ export default {
         }
     },
     methods: {
+        /*
+        * Saves stats, name and url for a item, emited by PictureBox.
+        * Runnes everytime a PictureBox is updated.
+        */
         updateItems(stat, name, url) {
             for (const item of this.items) {
                 if (item.itemName === name) {
@@ -35,6 +41,10 @@ export default {
                 }
             }
         },
+        /*
+        * Saves a character with name, url for the pictures and stats.
+        * Converts it into JSON-StringObject to be able to save in local storage.
+        */
         saveCharacter() {
             if (this.characterName.length > 0) {
                 localStorage.setItem(this.characterName, JSON.stringify(this.items))
@@ -43,6 +53,9 @@ export default {
                 this.showEnterNameAlert()
             }
         },
+        /*
+        * Alert notifying user the character has been saved.
+        */
         showSaveAlert() {
             this.saveAlert = true
             this.characterName = "";
@@ -50,12 +63,19 @@ export default {
                 this.saveAlert = false;
             }, 3000);
         },
+        /*
+        * Alert notifying user they have to enter a name before saving.
+        */
         showEnterNameAlert() {
             this.enterNameAlert = true
             setTimeout(() => {
                 this.enterNameAlert = false;
             }, 3000);
         },
+        /*
+        * Count loaded pictures to block save button until all pictures
+        * are loaded.
+        */
         checkLoad() {
             this.countPicBox++
             if (this.countPicBox > 5) {

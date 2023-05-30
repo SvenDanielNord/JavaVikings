@@ -29,7 +29,6 @@ export default {
                 this.checkDescription(response.description)
                 this.generateStats()
                 this.emitStats()
-                console.log(search, this.url)
             }
             catch (error) {
                 alert(error.message)

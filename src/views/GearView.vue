@@ -82,10 +82,6 @@ export default {
                 this.loadSome = false;
             }
         },
-
-        clearCharacter() {
-            localStorage.clear()
-        },
     },
 
 
@@ -128,13 +124,6 @@ export default {
             <div v-if="enterNameAlert" class="col-5 alertMessage"> You have to enter a name!</div>
         </div>
     </div>
-
-
-    <div class="col">
-        <button button class="btn btn-danger" @click="clearCharacter">Clear storage</button>
-    </div>
-
-
 
     <div class="container text-center">
         <div class="row">

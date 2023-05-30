@@ -26,7 +26,8 @@ export default {
             this.loading = true
             try {
                 let response = await searchForThing(search)
-                while (response.url.includes("emuseumplus") || response.url.includes("catview") || response.url.includes("collections") || response.url.includes("f0bf98f")) {
+                console.log(response.url)
+                while (response.url.includes("emuseumplus") || response.url.includes("catview") || response.url.includes("collections") || response.url.includes("f0bf98f") || response.url.includes("1b3335be75")) {
                     response = await searchForThing(search)
                 }
                 this.loading = false

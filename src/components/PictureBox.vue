@@ -21,7 +21,7 @@ export default {
             this.loading = true
             try {
                 let response = await searchForThing(search)
-                while (response.url.includes("emuseumplus") || response.url.includes("collections")) {
+                while (response.url.includes("emuseumplus") || response.url.includes("catview") || response.url.includes("collections") || response.url.includes("f0bf98f")) {
                     response = await searchForThing(search)
                 }
                 this.loading = false
@@ -29,6 +29,7 @@ export default {
                 this.checkDescription(response.description)
                 this.generateStats()
                 this.emitStats()
+                console.log(search, this.url)
             }
             catch (error) {
                 alert(error.message)

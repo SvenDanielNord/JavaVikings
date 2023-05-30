@@ -1,7 +1,12 @@
 
 <script>
 import { searchForThing } from '../data/FetchData.js'
-
+/**
+ * Render pictures from api.
+ * Emits when picture is done loading and the stats from the given item.
+ * Checks if the response from containas a wanted url
+ *
+ */
 export default {
 
     props: ["search"],
